@@ -43,8 +43,8 @@ Move to **ux** folder to **site-packages** for general use.
 
 Many thanks to those who made this project possible!
 
-- [Pythonista](https://omz-software.com/pythonista/).
-- [Pyto](https://github.com/ColdGrub1384/Pyto).
-- [Beeware-Toga](https://github.com/beeware/toga).
-- [Pythonista-Webview](https://github.com/mikaelho/pythonista-webview).
+- [Pythonista](https://omz-software.com/pythonista/)
+- [Pyto](https://github.com/ColdGrub1384/Pyto)
+- [Beeware-Toga](https://github.com/beeware/toga)
+- [Pythonista-Webview](https://github.com/mikaelho/pythonista-webview)
 - The many Pythonista Forum users over the years.

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable = no">
+<style>
+button {
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 0px 5px;
+  padding: 6px 12px;
+  color: #666;
+  font-size: 12px;
+  border: 1px solid #B6B6B6;
+  
+}
+</style>
+<script>
+
+console.log('loading...'); 
+
+function btn_clicked() {
+    let message  = prompt('Enter a message:', '');
+    if (message) {
+        let confirmed = confirm('Send ' + message + ' to python?');
+        if (confirmed) {
+            window.webkit.messageHandlers.jsmessage.postMessage(message);
+        }
+    }
+}  
+</script>
+</head>
+<body>
+<h1>Hello!</h1>
+<button id="b1" onclick="btn_clicked();">Click me!</button>
+<div id="idapp"></div>
+<div id="msg"></div>
+</body>
+</html>

@@ -35,7 +35,7 @@ The only requirement is [rubicon-objc](https://github.com/beeware/rubicon-objc).
 ### Try it!
 Copy the **demo.py** file along with the **examples** and **ux** folders into the iOS Python application of your choice. Launch **demo.py**.
 
-Move to **ux** folder to **site-packages** for general use.
+Move the **ux** folder to **site-packages** for general use.
 
 
 ---

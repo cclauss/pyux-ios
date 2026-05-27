@@ -1,7 +1,5 @@
 # **ux.Button()**
 ## attributes
----
-
 Button.**action**
 
 Button.**enabled**

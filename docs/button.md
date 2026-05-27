@@ -1,5 +1,5 @@
-#**ux.Button()**
-##attributes
+# **ux.Button()**
+## attributes
 ---
 
 Button.**action**

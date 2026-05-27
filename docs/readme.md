@@ -1,7 +1,7 @@
 ### PyUx Docs
 - [View](view.md)
 - [Button](button.md)
-- [ButtonItem](buttomitem.md)
+- [ButtonItem](buttonitem.md)
 - [dialogs](dialogs.md)
 - [Label](label.md)
 - [ListDataSource](listdatasource.md)

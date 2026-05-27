@@ -1,0 +1,413 @@
+{
+    "classes": {
+        "view": {
+            "name": "View",
+            "constructor": "ux.View()",
+            "text": "this is a test",
+            "attributes": {
+                "alpha": "float in the range 0.0 to 1.0",
+                "background_color": "RGBA color as tuple",
+                "border_color": "blue",
+                "border_width": "1",
+                "bounds": "(0, 0, 580, 620)",
+                "center": "(myview.width/2, 20)",
+                "corner_radius": "5",
+                "flex": "'WH'",
+                "frame": "(0, 0, 580, 620)",
+                "height": "620",
+                "left_button_items": "--",
+                "name": "myframe",
+                "navigation_view": "--",
+                "objc_instance": "--",
+                "right_button_items": "--",
+                "superview": "--",
+                "subviews": "--",
+                "tag": "--",
+                "width": "580",
+                "x": "10",
+                "y": "20"
+            },
+            "methods": {
+                "add_subview": "146",
+                "bring_to_front": "Node",
+                "close": "close",
+                "confirm_vc": "--",
+                "convert_rect": "--",
+                "present": "--",               
+                "remove_subview": "--",
+                "size_to_fit": "--",
+                "tabbar_item": "--",
+                "wait_modal": "--"
+
+            },
+            "events": {
+                "did_load": "did_load()",
+                "keyboard_will_change": "keyboard_will_change",
+                "layout": "layout",
+                "did_appear": "did_appear",
+                "will_close": "will_close",
+                "did_close": "did_close"
+            }
+        },
+        "button": {
+            "name": "Button",
+            "constructor": "ux.Button()",
+            "attributes": {
+                "action": "1",
+                "enabled": "True",
+                "font": "black",
+                "image": "",
+                "menu": "5",
+                "tint_color": "blue",
+                "title": "title"
+            }
+        },
+        "buttomitem": {
+            "name": "ButtonItem",
+            "constructor": "ux.ButtonItem()",
+            "attributes": {
+                "action": "1",
+                "enabled": "True",
+                "font": "black",
+                "image": "",
+                "menu": "5",
+                "tint_color": "blue",
+                "title": "title"
+            }
+        },
+        "dialogs": {
+            "name": "dialogs",
+            "constructor": "ux.dialogs()",
+            "attributes": {
+                "date_dialog": "--",
+                "datetime_dialog": "--",
+                "pick_document": "--",
+                "list_dialog": "--",
+                "form_dialog": "--",
+                "share_image": "--",
+                "share_text": "--",
+                "share_url": "--",
+                "share_items": "--",
+                "text_dialog": "--",
+                "time_dialog": "--"
+            }
+        },
+        "label": {
+            "name": "Label",
+            "name": "Label",
+            "constructor": "ux.Label()",
+            "attributes": {
+                "alignment": "left",
+                "enable": "True",
+                "font": "black",
+                "line_break_mode": "",
+                "min_font_scale": "5",
+                "number_of_lines": "",
+                "scales_font": "",
+                "text": "text",
+                "text_color": "blue"
+            }
+        },
+        "listdatasource": {
+            "name": "ListDataSource",
+            "constructor": "ux.ListDataSource()",
+            "attributes": {
+                "accessory_action": "--",
+                "action": "--",
+                "delete_enabled": "--",
+                "edit_action": "--",
+                "font": "--",
+                "highlight_color": "--",
+                "items": "--",
+                "move_enabled": "--",
+                "number_of_lines": "--",
+                "selected_row": "--",
+                "tapped_accessory_row": "--",
+                "text_color": "--"
+            }
+        },
+        "navigationview": {
+            "name": "NavigationView",
+            "constructor": "ux.NavigationView()",
+            "methods": {
+                "close": "-",
+                "pop_view": "146",
+                "present": "--",               
+                "push_view": "--"
+            },
+            "events": {
+                "did_load": "",
+                "layout": ""
+            }
+        },
+        "scrollview": {
+            "name": "ScrollView",
+            "constructor": "ux.ScrollView()",
+            "attributes": {
+                "content_size": "1",
+                "scroll_enabled": "True"
+            }
+        },
+        "segmentedcontrol": {
+            "name": "SegmentedControl",
+            "constructor": "ux.SegmentedControl()",
+            "attributes": {
+                "action": "1",
+                "enabled": "True",
+                "font": "('font', 12)",
+                "highlight_color": "gray",
+                "segments": "cyan",
+                "selected_index": "1",
+                "tint_color": "cyan"
+            }
+        },
+        "slider": {
+            "name": "Slider",
+            "constructor": "ux.Slider()",
+            "attributes": {
+                "action": "1",
+                "enabled": "True",
+                "value": "80"
+            }
+        },
+        "splitview": {
+            "name": "SplitView",
+            "constructor": "ux.SplitView()",
+            "attributes": {
+                "display_mode": "1",
+                "display_mode_button": "True",
+                "presents_with_gesture": "True",
+                "secondary_only_button": "",
+                "split_behavior": "",
+                "left_button_items": "",
+                "right_button_items": "",
+                "primary_column_width_fraction": "",
+                "primary_column_width": "",
+                "minimum_primary_column_width": "",
+                "maximum_primary_column_width": "",
+                "supplementary_column_width_fraction": "",
+                "supplementary_column_width": "",
+                "minimum_supplementary_column_width": "",
+                "maximum_supplementary_column_width": ""
+            },
+            "methods": {
+                "set_view": "--",
+                "set_tabbar": "--",
+                "present": "",
+                "collapsing_top_column": "",
+                "single_mode": "",
+                "show_column": "",
+                "hide_column": "",
+                "show_primary": "",
+                "show_supplementary": "",
+                "show_secordary": "",
+                "collasped": "",
+                "close": "",
+                "display_mode_int": "",
+                "display_mode_btn_int": "",
+                "split_behavior_int": "",
+                "column_int": ""
+            }
+        },
+        "switch": {
+            "name": "Switch",
+            "constructor": "ux.Switch()",
+            "attributes": {
+                "action": "1",
+                "enabled": "True",
+                "value": "80"
+            }
+        },
+        "tableview": {
+            "name": "TableView",
+            "constructor": "ux.TableView()",
+            "attributes": {
+                "allows_multiple_selection": "allows_multiple_selection",
+                "allows_multiple_selection_during_editing": "allows_multiple_selection_during_editing",
+                "allows_selection": "allows_selection",
+                "allows_selection_during_editing": "allows_selection_during_editing",
+                "editing": "editing",
+                "data_source": "data_source",
+                "delegate": "delegate",
+                "refresh_action": "refresh_action",
+                "row_height": "row_height",
+                "search_action": "search_action",
+                "selected_row": "selected_row",
+                "selected_rows": "selected_rows",
+                "separator_color": "separator_color"
+
+            },
+            "methods": {
+                "begin_refresh": "begin_refresh",
+                "end_refresh": "end_refresh",
+                "begin_updates": "begin_updates",
+                "end_updates": "end_updates",
+                    
+                "reload": "reload",
+                "reload_data": "reload_data",
+                "delete_rows": "delete_rows",
+                "insert_rows": "insert_rows",
+
+
+                "refresh_data": "refresh_data",
+                "content_inset": "content_inset",
+                "on_presented": "on_presented"
+            },
+            "datasource methods": {
+                "tableview_number_of_sections": "--",
+                "tableview_number_of_rows": "-",
+                "tableview_cell_for_row": "--",
+                "tableview_title_for_header": "--",
+                "tableview_can_delete": "--",
+                "tableview_can_edit": "--",
+                "tableview_can_move": "--",
+                "tableview_editing_style": "--",
+                "tableview_delete": "--",
+                "tableview_move_row": "--",
+                "tableview_height_for_row": "--"
+            },
+            "delegate methods": {            
+                "tableview_did_select": "--",
+                "tableview_did_deselect": "--",
+                "tableview_title_for_delete_button": "--",
+                "tableview_accessory_button_tapped": "--"
+            }
+        },
+        "tablecellview": {
+            "name": "TableCellView",
+            "constructor": "ux.TableCellView()",
+            "attributes": {
+                "accessory_type": "--",
+                "content_view": "--",
+                "detail_text_label": "--",
+                "image_view": "--",
+                "selectable": "--",
+                "selected_background_view": "--",
+                "style": "--",
+                "text_label": "--"
+            }
+        },
+        "textfield": {
+            "name": "TextField",
+            "constructor": "ux.TextField()",
+            "attributes": {
+                "action": "1",
+                "alignment": "left",
+                "autocapitalization_type": "left",
+                "autocorrection_type": "left",
+                "bordered": "left",
+                "clear_button_mode": "while_editing",
+                "enabled": "True",
+                "font": "('font', 12)",
+                "keyboard_type": "True",
+                "placeholder": "True",
+                "secure": "False",
+                "spellchecking_type": "True",
+                "text": "Hello",
+                "text_color": "black"
+            }
+        },
+        "textview": {
+            "name": "TextView",
+            "constructor": "ux.TextView()",
+            "attributes": {
+                "action": "1",
+                "alignment": "left",
+                "autocapitalization_type": "left",
+                "autocorrection_type": "left",
+                "bordered": "left",
+                "clear_button_mode": "while_editing",
+                "editable": "True",
+                "font": "('font', 12)",
+                "keyboard_type": "True",
+                "placeholder": "True",
+                "selectable": "True",
+                "selected_range": "value",
+                "spellchecking_type": "True",
+                "text": "Hello",
+                "text_color": "black"
+            }
+        },
+        "webview": {
+            "name": "WebView",
+            "constructor": "ux.WebView()",
+            "attributes": {
+                "allowscript": "True",
+                "delegate": "--"
+            },
+            "methods": {
+                "add_meta": "--",
+                "add_script": "--",
+                "add_style": "--",
+                "disable_all": "--",
+                "disable_font_resizing": "--",
+                "disable_scrolling": "--",
+                "disable_user_selection": "--",
+                "disable_zoom": "--",
+                "eval_js": "--",
+                "go_back": "--",
+                "go_forward": "--",
+                "layout": "--",
+                "load_html": "--",
+                "load_url": "--",
+                "reload": "--",
+                "stop": "--"
+            },
+            "delegate methods": {
+                "webview_should_start_load": "--",
+                "webview_did_start_load": "--",
+                "webview_did_finish_load": "--",
+                "webview_did_fail_load": "--",
+                "webview_did_fail_load": "--"
+            }
+        },
+        "activityindicator": {
+            "name": "ActivityIndicator",
+            "constructor": "ux.ActivityIndicator()",
+            "attributes": {
+                "action": "--",
+                "hides_when_stopped": "--",
+                "style": "--"
+            },
+            "methods": {
+                "start": "--",
+                "stop": "--"
+            }
+        },
+        "alerts": {
+            "name": "Alerts",
+            "constructor": "ux.Alerts",
+            "methods": {
+                "alert": "--",
+                "confirm_dialog": "--",
+                "hud_alert": "--",
+                "input_alert": "--",
+                "password_alert": "--"
+            }
+        },
+        "font": {
+            "name": "Font",
+            "constructor": "ux.Font()",
+            "methods": {
+                "named": "--"
+            }
+        },
+        "image": {
+            "name": "Image",
+            "constructor": "ux.Image()",
+            "methods": {
+                "named": "--"
+            }
+        },
+        "keychain": {
+            "name": "keychain",
+            "constructor": "keychain",
+            "methods": {
+                "get_password": "--",
+                "set_password": "--",
+                "delete_password": "--",
+                "get_services": "--"
+            }
+        }
+    }
+}

@@ -480,7 +480,7 @@ def new_context():
     return context
 
 def is_available():
-    context = LAContext.new().autorelease()
+    context = LAContext.new()
     available = bool(context.canEvaluatePolicy_error_(1, None))
     #  FaceID only avaiable if NSFaceIDUsageDescription key is found in applications Info.plist file.
     if context.biometryType == 2:

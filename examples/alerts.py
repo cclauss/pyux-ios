@@ -101,9 +101,6 @@ view.frame = (0, 0, w, 620)
 view.background_color = 'cyan'
 
 b1 = ux.Button(title='Alert Modal')
-#t1 = ux.Button()
-#b1.title = '   dialog   '
-b1.name = 'btnpopup'
 b1.frame = (0, 0, 200, 40)
 b1.center = (view.width/2, 50)
 b1.flex = 'W'
@@ -113,7 +110,6 @@ b1.action = alert_modal
 view.add_subview(b1)
 
 b2 = ux.Button(title='Alert Callback')
-b2.name = 'btnpopup'
 b2.frame = (0, 0, 200, 40)
 b2.center = (view.width/2, 120)
 b2.flex = 'W'
@@ -123,7 +119,6 @@ b2.action = alert_callback
 view.add_subview(b2)
 
 b3 = ux.Button(title='Input Modal')
-b3.name = 'btnpopup'
 b3.frame = (0, 0, 200, 40)
 b3.center = (view.width/2, 190)
 b3.flex = 'W'
@@ -133,7 +128,6 @@ b3.action = input_modal
 view.add_subview(b3)
 
 b4 = ux.Button(title='Input callback')
-b4.name = 'btnpopup'
 b4.frame = (0, 0, 200, 40)
 b4.center = (view.width/2, 260)
 b4.flex = 'W'

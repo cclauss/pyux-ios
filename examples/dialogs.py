@@ -103,7 +103,6 @@ view.frame = (0, 0, w, 620)
 view.background_color = 'cyan'
 
 t1 = ux.Button(title='Text modal')
-t1.name = 'btnpopup'
 t1.frame = (0, 0, 200, 40)
 t1.center = (view.width/2, 50)
 t1.flex = 'W'
@@ -113,7 +112,6 @@ t1.action = text_modal
 view.add_subview(t1)
 
 t2 = ux.Button(title='Text callback')
-t2.name = 'btnpopup'
 t2.frame = (0, 0, 200, 40)
 t2.center = (view.width/2, 120)
 t2.flex = 'W'
@@ -123,7 +121,6 @@ t2.action = text_callback
 view.add_subview(t2)
 
 d1 = ux.Button(title='Date modal')
-d1.name = 'btnpopup'
 d1.frame = (0, 0, 200, 40)
 d1.center = (view.width/2, 190)
 d1.flex = 'W'
@@ -133,7 +130,6 @@ d1.action = date_modal
 view.add_subview(d1)
 
 d2 = ux.Button(title='Date callback')
-d2.name = 'btnpopup'
 d2.frame = (0, 0, 200, 40)
 d2.center = (view.width/2, 260)
 d2.flex = 'W'

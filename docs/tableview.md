@@ -251,7 +251,6 @@ TableView.**tableview_accessory_button_tapped**(tableview, section, row)
 
 ```
     def tableview_accessory_button_tapped(self, tableview, section, row):
-        dprint('accessory tapped: ', row)
         if self.accessory_action:
             self.accessory_action(self)
 ```

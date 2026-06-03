@@ -43,6 +43,21 @@ TableView.**delegate**
 
 - Class which implements one or more delegate methods or None
 
+TableView.**header_view**
+
+- type: ux.View
+- TableView header view
+
+TableView.**menu_items**
+
+- List of menu item titles ['Add', 'Edit', 'Refresh']
+- Creates long press context menu
+
+TableView.**menu_choice**
+
+- Callable to evaluate menu item selection
+- Use sender.title to retrieve value
+
 TableView.**refresh_action**
 
 - Callable for pull-down refresh or None

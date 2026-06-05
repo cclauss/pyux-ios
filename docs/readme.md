@@ -12,7 +12,7 @@
 - [SplitView](splitview.md)
 - [Switch](switch.md)
 - [TableView](tableview.md)
-- [TableCellView](tablecellview.md)
+- [TableViewCell](tableviewcell.md)
 - [TextField](textfield.md)
 - [TextView](textview.md)
 - [WebView](webview.md)

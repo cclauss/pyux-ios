@@ -6,6 +6,7 @@
 - [Label](label.md)
 - [ListDataSource](listdatasource.md)
 - [NavigationView](navigationview.md)
+- [Menu](menu.md)
 - [ScrollView](scrollview.md)
 - [SegmentedControl](segmentedcontrol.md)
 - [Slider](slider.md)

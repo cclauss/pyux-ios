@@ -3,23 +3,24 @@ ux.Menu(title, items)
 
 ```
 # basic
-menu = ux.Menu('Actions', [ 'Add', 'Edit', 'Refresh']
+menu = ux.Menu('Actions', [ 'Add', 'Edit', 'Refresh'])
 
 self.tv.right_button_items = [ux.ButtonItem(title='Actions', action=None, menu=menu)]
 ```
 
 ```
 # advanced
+menuimg = ux.Image.named('system:ellipsis.circle') # sfsymbol
 menu = ux.Menu('Folders',
-	[
-	    ('Local', menu_handler),
-	    ('Cloud', menu_handler),
-	    {'title': 'Remote', 'handler': menu_handler, 'image': menuimg, 'xattributes': 1},
-	    ('More', [('Sub 1', menu_handler), ('Sub 2', menu_handler)]),
-	    ('App Files', menu_handler)   
-	]
-	
-self.tv.right_button_items = [ux.ButtonItem(title='Folders', action=None, menu=menu)]	
+    [
+        ('Local', menu_handler),
+        ('Cloud', menu_handler),
+        {'title': 'Remote', 'handler': menu_handler, 'image': menuimg, 'xattributes': 1},
+        ('More', [('Sub 1', menu_handler), ('Sub 2', menu_handler)]),
+        ('App Files', menu_handler)
+    ]
+)
+self.tv.right_button_items = [ux.ButtonItem(title='Folders', action=None, menu=menu)]
 ```
 Menu.**title**
 

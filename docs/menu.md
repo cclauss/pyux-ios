@@ -26,7 +26,7 @@ Menu.**title**
 - string
 
 Menu.**items**
-- list of types
+- list of the following types:
   
   - tuple (title, handler)
   - dictionary {'title': 'Remote', 'handler': menu_handler, 'image': menuimg, 'xattributes': 1}

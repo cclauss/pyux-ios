@@ -19,7 +19,7 @@
 - [WebView](webview.md)
 - [ActivityIndicator](activityindicator.md)
 - [Alerts](alerts.md)
-- [Core functions](corefunstions.md)
+- [Core functions](corefunctions.md)
 - [Font](font.md)
 - [Image](image.md)
 - [keychain](keychain.md)

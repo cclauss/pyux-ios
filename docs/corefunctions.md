@@ -37,6 +37,13 @@ def dprint(*args):
     if options['debuglevel'] > 0:
         print('debug: ', args)
 ```
+ux.**py3kit**
+
+- True if 'Pythonista3.app' in sys.executable
+
+ux.**pyto**
+
+- True if 'Pyto.app' in sys.executable
 
 ux.**ios_version**()
 

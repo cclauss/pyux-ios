@@ -12,6 +12,7 @@
 - [Slider](slider.md)
 - [SplitView](splitview.md)
 - [Switch](switch.md)
+- [TabBar](tabbar.md)
 - [TableView](tableview.md)
 - [TableViewCell](tableviewcell.md)
 - [TextField](textfield.md)

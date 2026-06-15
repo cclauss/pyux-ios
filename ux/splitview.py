@@ -67,15 +67,7 @@ class SplitView():
                 self.detailvc = view.controller
             asyncq(setvc)
 
-    def set_tabbar(self, ctrl, column):
-
-        if column == 2:
-            self.detailvc = ctrl.controller
-        def setvc(self_):
-            self.controller.setViewController_forColumn_(ctrl.controller, column)
-        asyncq(setvc)
-
-    def present(self, style):
+    def present(self, style='sheet'):
         sw, sh = get_window_size()
         w = 1200 if sw > 800 else sw
         if style == 'fullscreen':

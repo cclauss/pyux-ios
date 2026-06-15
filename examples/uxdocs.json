@@ -7,7 +7,7 @@
             "attributes": {
                 "alpha": "float in the range 0.0 to 1.0",
                 "background_color": "RGBA color as tuple",
-                "border_color": "blue",
+                "border_color": "'blue'",
                 "border_width": "1",
                 "bounds": "(0, 0, 580, 620)",
                 "center": "(myview.width/2, 20)",
@@ -16,7 +16,7 @@
                 "frame": "(0, 0, 580, 620)",
                 "height": "620",
                 "left_button_items": "--",
-                "name": "myframe",
+                "name": "'myview'",
                 "navigation_view": "--",
                 "objc_instance": "--",
                 "right_button_items": "--",
@@ -28,12 +28,11 @@
                 "y": "20"
             },
             "methods": {
-                "add_subview": "146",
-                "bring_to_front": "Node",
-                "close": "close",
-                "confirm_vc": "--",
-                "convert_rect": "--",
-                "present": "--",               
+                "add_subview": "--",
+                "bring_to_front": "--",
+                "close": "--",
+                "ensure_vc": "--",
+                "present": "--",
                 "remove_subview": "--",
                 "size_to_fit": "--",
                 "tabbar_item": "--",
@@ -41,38 +40,48 @@
 
             },
             "events": {
-                "did_load": "did_load()",
-                "keyboard_will_change": "keyboard_will_change",
-                "layout": "layout",
-                "did_appear": "did_appear",
-                "will_close": "will_close",
-                "did_close": "did_close"
+                "did_load": "--",
+                "keyboard_will_change": "--",
+                "layout": "--",
+                "did_appear": "--",
+                "will_close": "--",
+                "did_close": "--"
             }
         },
         "button": {
             "name": "Button",
             "constructor": "ux.Button()",
             "attributes": {
-                "action": "1",
+                "action": "--",
                 "enabled": "True",
-                "font": "black",
-                "image": "",
-                "menu": "5",
-                "tint_color": "blue",
-                "title": "title"
+                "font": "('Menlo', 14)",
+                "image": "--",
+                "menu": "--",
+                "tint_color": "'blue'",
+                "title": "'title'"
             }
         },
         "buttomitem": {
             "name": "ButtonItem",
             "constructor": "ux.ButtonItem()",
             "attributes": {
-                "action": "1",
+                "action": "--",
                 "enabled": "True",
-                "font": "black",
-                "image": "",
-                "menu": "5",
-                "tint_color": "blue",
-                "title": "title"
+                "image": "--",
+                "menu": "--",
+                "tint_color": "'blue'",
+                "title": "'title'"
+            }
+        },
+        "datepicker": {
+            "name": "DatePicker",
+            "constructor": "ux.DatePicker()",
+            "attributes": {
+                "action": "--",
+                "date": "--",
+                "enabled": "True",
+                "mode": "'date'",
+                "style": "'inline'"
             }
         },
         "dialogs": {
@@ -97,15 +106,15 @@
             "name": "Label",
             "constructor": "ux.Label()",
             "attributes": {
-                "alignment": "left",
+                "alignment": "--",
                 "enable": "True",
-                "font": "black",
+                "font": "--",
                 "line_break_mode": "",
                 "min_font_scale": "5",
                 "number_of_lines": "",
                 "scales_font": "",
-                "text": "text",
-                "text_color": "blue"
+                "text": "'text'",
+                "text_color": "'blue'"
             }
         },
         "listdatasource": {
@@ -126,13 +135,21 @@
                 "text_color": "--"
             }
         },
+        "menu": {
+            "name": "Menu",
+            "constructor": "ux.Menu()",
+            "attributes": {
+                "title": "--",
+                "items": "--"
+            }
+        },
         "navigationview": {
             "name": "NavigationView",
             "constructor": "ux.NavigationView()",
             "methods": {
                 "close": "-",
-                "pop_view": "146",
-                "present": "--",               
+                "pop_view": "--",
+                "present": "--",
                 "push_view": "--"
             },
             "events": {
@@ -152,20 +169,20 @@
             "name": "SegmentedControl",
             "constructor": "ux.SegmentedControl()",
             "attributes": {
-                "action": "1",
+                "action": "--",
                 "enabled": "True",
-                "font": "('font', 12)",
-                "highlight_color": "gray",
-                "segments": "cyan",
+                "font": "('Menlo', 12)",
+                "highlight_color": "'gray'",
+                "segments": "--",
                 "selected_index": "1",
-                "tint_color": "cyan"
+                "tint_color": "'cyan'"
             }
         },
         "slider": {
             "name": "Slider",
             "constructor": "ux.Slider()",
             "attributes": {
-                "action": "1",
+                "action": "--",
                 "enabled": "True",
                 "value": "80"
             }
@@ -174,13 +191,12 @@
             "name": "SplitView",
             "constructor": "ux.SplitView()",
             "attributes": {
+                "collasped": "",
                 "display_mode": "1",
                 "display_mode_button": "True",
                 "presents_with_gesture": "True",
                 "secondary_only_button": "",
                 "split_behavior": "",
-                "left_button_items": "",
-                "right_button_items": "",
                 "primary_column_width_fraction": "",
                 "primary_column_width": "",
                 "minimum_primary_column_width": "",
@@ -192,7 +208,6 @@
             },
             "methods": {
                 "set_view": "--",
-                "set_tabbar": "--",
                 "present": "",
                 "collapsing_top_column": "",
                 "single_mode": "",
@@ -201,57 +216,59 @@
                 "show_primary": "",
                 "show_supplementary": "",
                 "show_secordary": "",
-                "collasped": "",
-                "close": "",
-                "display_mode_int": "",
-                "display_mode_btn_int": "",
-                "split_behavior_int": "",
-                "column_int": ""
+                "close": ""
             }
         },
         "switch": {
             "name": "Switch",
             "constructor": "ux.Switch()",
             "attributes": {
-                "action": "1",
+                "action": "--",
                 "enabled": "True",
                 "value": "80"
+            }
+        },
+        "tabbar": {
+            "name": "TabBar",
+            "constructor": "ux.TabBar()",
+            "methods": {
+                "set_views": "--",
+                "present": "--",
+                "close": "--"
             }
         },
         "tableview": {
             "name": "TableView",
             "constructor": "ux.TableView()",
             "attributes": {
-                "allows_multiple_selection": "allows_multiple_selection",
-                "allows_multiple_selection_during_editing": "allows_multiple_selection_during_editing",
-                "allows_selection": "allows_selection",
-                "allows_selection_during_editing": "allows_selection_during_editing",
-                "editing": "editing",
-                "data_source": "data_source",
-                "delegate": "delegate",
-                "refresh_action": "refresh_action",
-                "row_height": "row_height",
-                "search_action": "search_action",
-                "selected_row": "selected_row",
-                "selected_rows": "selected_rows",
-                "separator_color": "separator_color"
+                "allows_multiple_selection": "--",
+                "allows_multiple_selection_during_editing": "--",
+                "allows_selection": "--",
+                "allows_selection_during_editing": "--",
+                "editing": "False",
+                "data": "[]",
+                "data_source": "--",
+                "delegate": "--",
+                "header_view": "--",
+                "menu_items": "--",
+                "header_view": "--",
+                "refresh_action": "--",
+                "row_height": "--",
+                "search_action": "--",
+                "selected_row": "--",
+                "selected_rows": "--",
+                "separator_color": "'black'"
 
             },
             "methods": {
-                "begin_refresh": "begin_refresh",
-                "end_refresh": "end_refresh",
-                "begin_updates": "begin_updates",
-                "end_updates": "end_updates",
-                    
-                "reload": "reload",
-                "reload_data": "reload_data",
-                "delete_rows": "delete_rows",
-                "insert_rows": "insert_rows",
-
-
-                "refresh_data": "refresh_data",
-                "content_inset": "content_inset",
-                "on_presented": "on_presented"
+                "begin_refresh": "--",
+                "end_refresh": "--",
+                "begin_updates": "--",
+                "end_updates": "--",
+                "reload": "--",
+                "reload_data": "--",
+                "delete_rows": "--",
+                "insert_rows": "--"
             },
             "datasource methods": {
                 "tableview_number_of_sections": "--",
@@ -266,16 +283,16 @@
                 "tableview_move_row": "--",
                 "tableview_height_for_row": "--"
             },
-            "delegate methods": {            
+            "delegate methods": {
                 "tableview_did_select": "--",
                 "tableview_did_deselect": "--",
                 "tableview_title_for_delete_button": "--",
                 "tableview_accessory_button_tapped": "--"
             }
         },
-        "tablecellview": {
-            "name": "TableCellView",
-            "constructor": "ux.TableCellView()",
+        "tableviewcell": {
+            "name": "TableViewCell",
+            "constructor": "ux.TableViewCell()",
             "attributes": {
                 "accessory_type": "--",
                 "content_view": "--",
@@ -291,41 +308,43 @@
             "name": "TextField",
             "constructor": "ux.TextField()",
             "attributes": {
-                "action": "1",
-                "alignment": "left",
-                "autocapitalization_type": "left",
-                "autocorrection_type": "left",
-                "bordered": "left",
-                "clear_button_mode": "while_editing",
+                "action": "--",
+                "alignment": "--",
+                "autocapitalization_type": "--",
+                "autocorrection_type": "None",
+                "bordered": "--",
+                "clear_button_mode": "'while_editing'",
+                "delegate": "--",
                 "enabled": "True",
-                "font": "('font', 12)",
-                "keyboard_type": "True",
-                "placeholder": "True",
+                "font": "('Menlo', 12)",
+                "keyboard_type": "--",
+                "placeholder": "--",
                 "secure": "False",
-                "spellchecking_type": "True",
-                "text": "Hello",
-                "text_color": "black"
+                "spellchecking_type": "None",
+                "text": "'Hello'",
+                "text_color": "'black'"
             }
         },
         "textview": {
             "name": "TextView",
             "constructor": "ux.TextView()",
             "attributes": {
-                "action": "1",
-                "alignment": "left",
-                "autocapitalization_type": "left",
-                "autocorrection_type": "left",
-                "bordered": "left",
-                "clear_button_mode": "while_editing",
+                "action": "--",
+                "alignment": "--",
+                "autocapitalization_type": "--",
+                "autocorrection_type": "None",
+                "bordered": "--",
+                "clear_button_mode": "'while_editing'",
+                "delegate": "--",
                 "editable": "True",
-                "font": "('font', 12)",
-                "keyboard_type": "True",
-                "placeholder": "True",
+                "font": "('Menlo', 12)",
+                "keyboard_type": "--",
+                "placeholder": "--",
                 "selectable": "True",
-                "selected_range": "value",
-                "spellchecking_type": "True",
-                "text": "Hello",
-                "text_color": "black"
+                "selected_range": "--",
+                "spellchecking_type": "None",
+                "text": "'Hello'",
+                "text_color": "'black'"
             }
         },
         "webview": {
@@ -385,6 +404,29 @@
                 "password_alert": "--"
             }
         },
+        "corefunctions": {
+            "name": "Core functions",
+            "constructor": "UX core functions ",
+            "functions": {
+                "asyncq": "--",
+                "options": "--",
+                "dprint": "--",
+                "py3kit": "--",
+                "pyto": "--",
+                "ios_version": "--",
+                "ios_version_info": "--",
+                "get_screen_size": "--",
+                "get_window_size": "--",
+                "get_window_traits": "--",
+                "rootvc": "--",
+                "topvc": "--",
+                "in_background": "--",
+                "on_main_thread": "--",
+                "convert_point": "--",
+                "convert_rect": "--",
+                "animate": "--"
+            }
+        },
         "font": {
             "name": "Font",
             "constructor": "ux.Font()",
@@ -394,15 +436,16 @@
         },
         "image": {
             "name": "Image",
-            "constructor": "ux.Image()",
+            "constructor": "ux.Image",
             "methods": {
                 "named": "--"
             }
         },
         "keychain": {
             "name": "keychain",
-            "constructor": "keychain",
+            "constructor": "keychain functions",
             "methods": {
+                "new_context": "--",
                 "get_password": "--",
                 "set_password": "--",
                 "delete_password": "--",

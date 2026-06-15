@@ -143,6 +143,7 @@ class TableView2():
         self.webview.disable_zoom()
         html = htmldef.get(str(self.tv.name).lower() + '.' + self.tv.data[sec][1][row]['title'], None)
         if html:
+            html = html.replace('{tab}', '    ')
             self.webview.load_html(HTML.replace('{body}', html))
         else:
             self.webview.load_html(HTML.replace('{body}', 'error'))

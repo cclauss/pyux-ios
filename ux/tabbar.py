@@ -29,7 +29,7 @@ class TabBar():
 
         asyncq(setvcs)
 
-    def present(self, style):
+    def present(self, style='sheet'):
         if style == 'fullscreen':
             self.controller.setModalPresentationStyle_(0)
         else:

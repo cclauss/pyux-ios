@@ -45,3 +45,4 @@ class TabBar():
 
     def close(self, sender=None):
         self.controller.dismissViewControllerAnimated_completion_(True, None)
+        

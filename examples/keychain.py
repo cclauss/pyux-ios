@@ -25,7 +25,7 @@ def prompt_value2(sender):
 
 def prompt_biometric1(sender):
     """
-    FaceID only avaiable if NSFaceIDUsageDescription key is found in application Info.plist file.
+    FaceID only available if NSFaceIDUsageDescription key is found in application Info.plist file.
     Pythonista = True
     Pyto = False
     """

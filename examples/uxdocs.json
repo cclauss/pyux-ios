@@ -191,7 +191,7 @@
             "name": "SplitView",
             "constructor": "ux.SplitView()",
             "attributes": {
-                "collasped": "",
+                "collapsed": "",
                 "display_mode": "1",
                 "display_mode_button": "True",
                 "presents_with_gesture": "True",

@@ -285,13 +285,13 @@ class UXDocs():
         return 0
         
     def show_supplementary(self, sender):
-        if self.split.collasped:
+        if self.split.collapsed:
             self.split.show_column('supplementary')
         else:
             self.split.show_column('supplementary')
             
     def show_secordary(self, sender):
-        if self.split.collasped:
+        if self.split.collapsed:
             self.split.show_column('secordary')
 
     def did_appear(self):

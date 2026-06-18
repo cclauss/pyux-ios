@@ -19,7 +19,7 @@ View.**alpha**
 
 View.**background_color**
 
-- View's backgroud color.
+- View's background color.
 
 - Get returns:
   - tuple: (1.0, 0.0, 0.0, 0.5)
@@ -190,7 +190,7 @@ View.**present**(style='sheet', animated=True,
   - hide_title_bar - boolean
   - title_bar_color - title bar background color
   - title_color - title bar text color
-  - orientations - not suppored
+  - orientations - not supported
   - hide_close_button - boolean
   - right_close_button - boolean - close button on right instead of default left
 

@@ -82,7 +82,7 @@ ux.**topvc()**
 
 ux.**in_background**(fn)
 
-- Use function decorator to run funtion in background thread
+- Use function decorator to run function in background thread
 
 ```
 @ux.in_background
@@ -92,7 +92,7 @@ def background_code():
 
 ux.**on_main_thread**(fn)
 
-- Use function decorator to run funtion on main UI thread
+- Use function decorator to run function on main UI thread
 
 ```
 @ux.on_main_thread

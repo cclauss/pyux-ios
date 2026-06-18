@@ -37,6 +37,12 @@ Copy the **demo.py** file along with the **examples** and **ux** folders into th
 
 Move the **ux** folder to **site-packages** for general use.
 
+or
+
+Run single line script to install. This will also install rubicon-objc if needed.
+```
+import requests as r; exec(r.get('https://raw.githubusercontent.com/sbbosco/pyux-ios/main/dist/pyuxinstall.py').content)
+```
 
 ---
 ### Acknowledgments

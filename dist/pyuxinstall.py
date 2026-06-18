@@ -73,7 +73,7 @@ def get_pyux():
                 shutil.rmtree(os.path.join(sitepath, f))
             if f == 'ux':
                 shutil.rmtree(os.path.join(sitepath, f))
-        #return
+
         os.chdir(sitepath)
         with ZipFile(pkg_file, 'r') as zip:
             # extracting all the files
@@ -96,7 +96,7 @@ if os.path.exists(sitepath):
         url = download_info(pkg_name)
         dest_path = os.path.join(tmppath, pkg_name + '.zip')
         download_pkg(url, dest_path)
-        install_pkg(pkg_name, dest_path)
+        install_pkg(dest_path)
 
     get_pyux()
 

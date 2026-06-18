@@ -1,5 +1,7 @@
 #!python3
 
+import sys
+
 import ux
 
 HTML = """<html><head>

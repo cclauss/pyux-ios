@@ -79,7 +79,7 @@ class FileOps (object):
                 else:
                     shutil.copy2(row[0] + os.sep + row[1], destpath)
             except:
-                Console.hud_alert(str(sys.exc_info()))
+                console.hud_alert(str(sys.exc_info()))
                 print(path)
                 print(self.filelist)
                 print ("Exception copy",str(sys.exc_info()))
@@ -144,7 +144,7 @@ class FilesView():
             _, folders, files = next(os.walk(path))
         except:
             print('access denied')
-            Console.hud_alert('access denied')
+            console.hud_alert('access denied')
             return
         
         if path != self.rootpath:

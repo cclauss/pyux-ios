@@ -28,7 +28,7 @@ keychain.**set_password**(service, account, authentication=None)
   - 'any' - fallback to PIN
   - None
 
->>   FaceID only avaiable if NSFaceIDUsageDescription key is found in application Info.plist file.
+>>   FaceID only available if NSFaceIDUsageDescription key is found in application Info.plist file.
  Pythonista = True  
  Pyto = False
 

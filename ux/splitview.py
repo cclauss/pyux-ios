@@ -31,9 +31,9 @@ class SplitView():
     def __init__(self, style='double'):
         splitcls = get_splitview()
         if style == 2 or style == 'double':
-            self.controller = splitcls.alloc().initWithStyle_(1) # 1 = 2 colunms
+            self.controller = splitcls.alloc().initWithStyle_(1) # 1 = 2 columns
         else:
-            self.controller = splitcls.alloc().initWithStyle_(2) # 2 = 3 colunms
+            self.controller = splitcls.alloc().initWithStyle_(2) # 2 = 3 columns
         self.controller.interface = self
         self.native = self.controller.view
         self.controller.delegate = self.controller
@@ -98,7 +98,7 @@ class SplitView():
 
         self.controller.displayModeButtonVisibility = 2 ; # 0 = auto ;# 1 = always ;# 2 = never
         self.controller.showsSecondaryOnlyButton = False
-        self.controller.collasped = True
+        self.controller.collapsed = True
         self.controller.hideColumn(0)
         self.controller.hideColumn(1)
 
@@ -118,7 +118,7 @@ class SplitView():
         self.controller.showColumn(2)
 
     @property
-    def collasped(self):
+    def collapsed(self):
         return self.controller.isCollapsed()
 
     @property

@@ -130,7 +130,7 @@ SplitView.**show_secordary**()
 
 - Show secordary column()
 
-SplitView.**collasped**()
+SplitView.**collapsed**()
 
 - return isCollapsed - read only
 

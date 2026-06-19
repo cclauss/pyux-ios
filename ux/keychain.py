@@ -482,7 +482,7 @@ def new_context():
 def is_available():
     context = LAContext.new()
     available = bool(context.canEvaluatePolicy_error_(1, None))
-    #  FaceID only avaiable if NSFaceIDUsageDescription key is found in applications Info.plist file.
+    #  FaceID only available if NSFaceIDUsageDescription key is found in applications Info.plist file.
     if context.biometryType == 2:
         with open(os.path.join(os.path.dirname(sys.executable), "Info.plist"), mode="rb") as fp:
             _properties = plistlib.load(fp)

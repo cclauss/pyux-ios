@@ -1,22 +1,17 @@
 import time
-from threading import current_thread, main_thread
+from threading import current_thread
 from rubicon.objc import Block, ObjCInstance, py_from_ns, send_message
 from rubicon.objc.runtime import objc_id
 from ctypes import c_int
 
-from .core import asyncq, dprint, in_background, on_main_thread, uxviews, waitModal, will_block
+from .core import asyncq, dprint, in_background, on_main_thread, topvc, waitModal, will_block
 
 from .uikit  import (
     UIAlertAction,
     UIAlertActionStyle,
     UIAlertController,
-    UIAlertControllerStyle,
-    UIApplication,
+    UIAlertControllerStyle
 )
-
-from .core import topvc, uxviews
-dprint('main?', current_thread().name)
-
 
 class AlertDialog():
     def __init__(self, window, title, message, callback=None):
@@ -227,7 +222,6 @@ def alert(title, *args, hide_cancel_button=False, callback=None):
     if will_block(callback):
         return None
 
-    confirm = 'Delete item?'
     if args:
         message = args[0]
     else:
@@ -257,8 +251,6 @@ def alert(title, *args, hide_cancel_button=False, callback=None):
 def input_alert(title, *args, hide_cancel_button=False, callback=None):
     if will_block(callback):
         return None
-
-    confirm = 'Delete item?'
     alertwait = waitModal()
     if args:
         message = args[0]

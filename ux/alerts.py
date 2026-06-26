@@ -1,5 +1,5 @@
 import time
-from threading import Thread, current_thread, main_thread, Semaphore
+from threading import current_thread, main_thread
 from rubicon.objc import Block, ObjCInstance, py_from_ns, send_message
 from rubicon.objc.runtime import objc_id
 from ctypes import c_int
@@ -139,18 +139,6 @@ class AlertDialog():
         textfield_block=Block(self.add_pwdconfig, None, objc_id)
         self.dialog.addTextFieldWithConfigurationHandler(textfield_block)
 
-
-def info_dialog(window, title, message):
-    dialog = uxModalDialog(title=title, message=message)
-    dialog.add_ok_button()
-    return dialog.runModal(window)
-
-def question_dialog(window, title, message):
-    dialog = uxModalDialog(title=title, message=message)
-    dialog.add_yes_button()
-    dialog.add_no_button()
-    return dialog.runModal(window)
-
 class Alert(AlertDialog):
 
     def __init__(self, alert_type, title, message, btns, set_result, callback=None, hide_cancel_button=False):
@@ -264,9 +252,6 @@ def alert(title, *args, hide_cancel_button=False, callback=None):
             return KeyboardInterrupt
 
         return alertwait.result
-
-        dprint('rs', aresult['result'])
-        return aresult['result']
     return None
 
 def input_alert(title, *args, hide_cancel_button=False, callback=None):
@@ -419,13 +404,5 @@ def confirm_dialog(title, message, callback=None):
     if not callback:
         alertwait.wait()
         dprint('rs', alertwait.result)
-        """
-        if not alertwait.result:
-            raise KeyboardInterrupt
-        """
         return alertwait.result
-
-        dprint('rs', aresult['result'])
-        return aresult['result']
-
     return None

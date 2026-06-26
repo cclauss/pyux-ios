@@ -109,10 +109,10 @@ NSNaturalTextAlignment = 4
 
 def NSTextAlignment(alignment):
     return {
-        LEFT: NSLeftTextAlignment,
-        RIGHT: NSRightTextAlignment,
-        CENTER: NSCenterTextAlignment,
-        JUSTIFY: NSJustifiedTextAlignment,
+        'LEFT': NSLeftTextAlignment,
+        'RIGHT': NSRightTextAlignment,
+        'CENTER': NSCenterTextAlignment,
+        'JUSTIFY': NSJustifiedTextAlignment,
     }[alignment]
 
 UIAction = ObjCClass('UIAction')

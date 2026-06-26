@@ -21,6 +21,7 @@ from .slider import *
 from .segmented import *
 from .sharing import *
 from .splitview import *
+from .stackview import *
 from .switch import *
 from .tabbar import *
 from .tableview import *

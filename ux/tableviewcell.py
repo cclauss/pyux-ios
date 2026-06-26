@@ -1,4 +1,3 @@
-from rubicon.objc import py_from_ns
 from .font import *
 
 from .uikit import (
@@ -13,12 +12,6 @@ from .uikit import (
     UITableViewCellStyleValue1,
     UITableViewCellStyleValue2
 )
-
-ALIGN_LEFT = 0
-ALIGN_CENTER = 1
-ALIGN_RIGHT = 2
-ALIGN_JUSTIFIED = 3
-ALIGN_NATURAL = 4
 
 class TableViewCell():
     def __init__(self, style='default', **kwargs):
@@ -64,6 +57,13 @@ class TableViewCell():
         else:
             self.native.accessoryType = 0
 
+    @property
+    def bounds(self):
+        return (self.native.contentView.bounds.origin.x,
+                self.native.contentView.bounds.origin.y,
+                self.native.contentView.bounds.size.width,
+                self.native.contentView.bounds.size.height)
+    
     @property
     def content_view(self):
         return self.native.contentView

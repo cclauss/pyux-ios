@@ -50,10 +50,6 @@ class ButtonItem():
     def menu(self):
         return self.native.menu
     
-    @property
-    def menu(self):
-        return menu.native
-
     @menu.setter
     def menu(self, menu):
         self.native.menu = menu.native

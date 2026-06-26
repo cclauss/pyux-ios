@@ -10,8 +10,9 @@ from .uikit import (
 
 class ButtonItem():
     def __init__(self, title=None, image=None, action=None, menu=None, enabled=True, tint_color=None):
+        self.action_handler = None
         if action:
-            item_handler_block=Block(action, None, objc_id)
+            item_handler_block=Block(self._action, None, objc_id)
             item_action = UIAction.actionWithHandler_(item_handler_block)
         else:
             item_action = None
@@ -31,6 +32,23 @@ class ButtonItem():
         if isinstance(menu, Menu):
             self.native.menu = menu.native
 
+    def _action(self, sender):
+        if self.action_handler:
+            self.action_handler(self)
+
+    @property
+    def action(self):
+        return self.action_handler
+
+    @action.setter
+    def action(self, handler):
+        if callable(handler):
+            self.action_handler = handler
+
+    @property
+    def menu(self):
+        return self.native.menu
+    
     @property
     def menu(self):
         return menu.native

@@ -1,17 +1,16 @@
 import sys, os, time
 from collections import namedtuple
-from rubicon.objc import __version__, Block, CGRect, CGPoint, CGSize, ObjCClass, ObjCInstance, py_from_ns
+from rubicon.objc import Block, CGRect, CGPoint, CGSize, ObjCClass, ObjCInstance
 from rubicon.objc.runtime import libobjc, objc_block, objc_id, load_library
 from rubicon.objc.types import NSTimeInterval
-from ctypes import Structure, byref, cast, c_void_p, cdll
-from threading import Thread, current_thread, main_thread, Semaphore
+from ctypes import Structure, byref, cast
+from threading import Thread, current_thread, Semaphore
 #print(__version__)
 
 from .uikit import (
     UIApplication,
     UIDevice,
     UIScreen,
-    UIWindow,
     UIView,
     UIUserInterfaceIdiom,
     UIUserInterfaceStyle,
@@ -47,7 +46,6 @@ libobjc.dispatch_async.argtypes = [
 
 def block_code(_self):
     dprint("async_q!!")
-    dprint(teststr)
 
 def asyncq(fn):
     dprint('fn')
@@ -95,7 +93,6 @@ def get_window_size():
     return (winWidth, winHeight)
 
 def get_window_traits():
-    window = UIApplication.sharedApplication.keyWindow
     obj = UIScreen.mainScreen.traitCollection
     dprint(UIUserInterfaceStyle.dark.value)
     return { 'idiom': UIUserInterfaceIdiom(obj.userInterfaceIdiom).name,

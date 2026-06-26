@@ -1,3 +1,4 @@
+__version__ = '1.0.3'
 from .foundation import *
 from .uikit import *
 from .activity import *

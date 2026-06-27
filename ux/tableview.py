@@ -447,7 +447,7 @@ class TableView(ViewCore):
             try:
                 sec = section_row.section
                 row = section_row.row
-            except:
+            except Exception:
                 sec = section_row.section()
                 row = section_row.row()
             rowset.append((sec, row))
@@ -473,7 +473,7 @@ class TableView(ViewCore):
             try:
                 sec = section_row.section
                 row = section_row.row
-            except:
+            except Exception:
                 sec = section_row.section()
                 row = section_row.row()
             rowset.append((sec, row))

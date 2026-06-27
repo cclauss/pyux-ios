@@ -459,7 +459,7 @@ def delete_password(service, account):
     query[kSecAttrAccount] = account
     try:
         sec_item_delete(query)
-    except:
+    except Exception:
         pass
         #print(sys.exc_info())
 

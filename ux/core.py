@@ -244,7 +244,7 @@ class waitModal():
                 if waitcount == 100:
                     self.done = [-1, 'none', 'none']
                     break
-            except:
+            except Exception:
                 dprint("Exception ",str(sys.exc_info()))
                 break
         if not self.done:

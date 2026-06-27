@@ -167,7 +167,7 @@ class WebView(View):
             custom_message_handler = message_handler.new()
             custom_message_handler.interface = self
             webview_config.userContentController.addScriptMessageHandler_name_(custom_message_handler, 'jsmessage')
-        except:
+        except Exception:
             print(str(sys.exc_info()))
             print('WKScriptMessageHandler protocol is not available')
 

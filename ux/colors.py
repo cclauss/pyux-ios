@@ -46,92 +46,92 @@ def uicolor(color):
             elif color == 'systemblue':
                 try:
                     return UIColor.systemBlueColor()
-                except:
+                except Exception:
                     return UIColor.systemBlueColor
             elif color == 'systembrown':
                 try:
                     return UIColor.systemBrownColor()
-                except:
+                except Exception:
                     return UIColor.systemBrownColor
             elif color == 'systemcyan':
                 try:
                     return UIColor.systemCyanColor()
-                except:
+                except Exception:
                     return UIColor.systemCyanColor
             elif color == 'systemgray':
                 try:
                     return UIColor.systemGrayColor()
-                except:
+                except Exception:
                     return UIColor.systemGrayColor
             elif color == 'systemgray2':
                 try:
                     return UIColor.systemGray2Color()
-                except:
+                except Exception:
                     return UIColor.systemGray2Color
             elif color == 'systemgray3':
                 try:
                     return UIColor.systemGray3Color()
-                except:
+                except Exception:
                     return UIColor.systemGray3Color
             elif color == 'systemgray4':
                 try:
                     return UIColor.systemGray4Color()
-                except:
+                except Exception:
                     return UIColor.systemGray4Color
             elif color == 'systemgray5':
                 try:
                     return UIColor.systemGray5Color()
-                except:
+                except Exception:
                     return UIColor.systemGray5Color
             elif color == 'systemgray6':
                 try:
                     return UIColor.systemGray6Color()
-                except:
+                except Exception:
                     return UIColor.systemGray6Color
             elif color == 'systemgreen':
                 try:
                     return UIColor.systemGreenColor()
-                except:
+                except Exception:
                     return UIColor.systemGreenColor
             elif color == 'systemindigo':
                 try:
                     return UIColor.systemIndigoColor()
-                except:
+                except Exception:
                     return UIColor.systemIndigoColor
             elif color == 'systemmint':
                 try:
                     return UIColor.systemMintColor()
-                except:
+                except Exception:
                     return UIColor.systemMintColor
             elif color == 'systemorange':
                 try:
                     return UIColor.systemOrangeColor()
-                except:
+                except Exception:
                     return UIColor.systemOrangeColor
             elif color == 'systempink':
                 try:
                     return UIColor.systemPinkColor()
-                except:
+                except Exception:
                     return UIColor.systemPinkColor
             elif color == 'systempurple':
                 try:
                     return UIColor.systemPurpleColor()
-                except:
+                except Exception:
                     return UIColor.systemPurpleColor
             elif color == 'systemred':
                 try:
                     return UIColor.systemRedColor()
-                except:
+                except Exception:
                     return UIColor.systemRedColor
             elif color == 'systemteal':
                 try:
                     return UIColor.systemTealColor()
-                except:
+                except Exception:
                     return UIColor.systemTealColor
             elif color == 'systemyellow':
                 try:
                     return UIColor.systemYellowColor()
-                except:
+                except Exception:
                     return UIColor.systemYellowColor
 
     elif isinstance(color, tuple):

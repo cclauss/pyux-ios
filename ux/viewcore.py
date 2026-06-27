@@ -238,7 +238,7 @@ class ViewCore():
         return self.controller.navigationController.interface
         try:
             return self.controller.navigationController.interface
-        except:
+        except Exception:
 
             return None
 
@@ -330,7 +330,7 @@ class ViewCore():
         for view in self.native.subviews():
             try:
                 views.append(view.interface)
-            except:
+            except Exception:
                 dprint('type err', view)
 
         return tuple(views)

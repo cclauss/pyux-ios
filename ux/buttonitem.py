@@ -49,7 +49,7 @@ class ButtonItem():
     @property
     def menu(self):
         return self.native.menu
-    
+
     @menu.setter
     def menu(self, menu):
         self.native.menu = menu.native

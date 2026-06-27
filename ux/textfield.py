@@ -1,13 +1,12 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, ObjCProtocol, SEL, objc_method, py_from_ns, send_message
+from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, SEL, objc_method, py_from_ns, send_message
 from rubicon.objc.runtime import get_class
 from ctypes import c_int
-from .colors import *
-from .font import *
+from typing import Callable
+from .colors import uicolor, uicolor_rgba
+from .font import Font
 from .viewcore import ViewCore
 
 from .uikit import (
-    NSTextAlignment,
-    UIControlEventEditingDidBegin,
     UIControlEventEditingChanged,
     UITextBorderStyle,
     UITextField,
@@ -167,7 +166,6 @@ class TextField(ViewCore):
 
     @property
     def autocorrection_type(self) -> str:
-        traits = self.native.textInputTraits()
         autocorrect = py_from_ns(self.native.textInputTraits().valueForKey('autocorrectionType'))
         if autocorrect == 0:
             return None
@@ -179,7 +177,7 @@ class TextField(ViewCore):
     @autocorrection_type.setter
     def autocorrection_type(self, value):
         autotype = 0
-        if type(value) == bool:
+        if type(value) is bool:
             if value:
                 autotype = 2
             else:
@@ -270,7 +268,6 @@ class TextField(ViewCore):
 
     @property
     def secure(self) -> str:
-        traits = self.native.textInputTraits()
         issecure = py_from_ns(self.native.textInputTraits().valueForKey('secureTextEntry'))
         if issecure == 1:
             return True
@@ -294,7 +291,7 @@ class TextField(ViewCore):
     @spellchecking_type.setter
     def spellchecking_type(self, value):
         spellcheck = 0
-        if type(value) == bool:
+        if type(value) is bool:
             if value:
                 spellcheck = 2
             else:

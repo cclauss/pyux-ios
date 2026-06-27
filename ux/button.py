@@ -1,16 +1,16 @@
 from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, SEL, objc_method, py_from_ns
 from rubicon.objc.runtime import get_class
-from .colors import *
-from .font import *
-from .image import *
-from .core import dprint, _in_background, in_background
+from ctypes import c_double, byref
+from typing import Callable
+from .colors import uicolor
+from .font import Font
+from .core import dprint, _in_background
 from .viewcore import ViewCore
 
 from .uikit import (
     UIButton,
     UIColor,
     UIControlEventTouchDown,
-    UIControlStateDisabled,
     UIControlStateNormal
 )
 
@@ -33,9 +33,6 @@ class Button(ViewCore):
         self.action_handler = None
         btnclass = get_button()
         self.native = btnclass.alloc().init()
-        ipath = os.path.join(os.path.dirname(__file__), 'media/images/iob/ios7_circle_filled_32')
-        ipath = os.path.join(os.path.dirname(__file__), 'media/images/emj/Artist_Palette')
-
         self.native.interface = self
         if kwargs.get('title', None):
                 self.title = kwargs['title']
@@ -83,7 +80,7 @@ class Button(ViewCore):
 
     @property
     def menu(self):
-        return menu.native
+        return self.native.menu
 
     @menu.setter
     def menu(self, menu):

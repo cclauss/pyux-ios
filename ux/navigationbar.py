@@ -1,5 +1,6 @@
 from rubicon.objc import CGRect, CGPoint, CGSize, ns_from_py
-from .colors import *
+from ctypes import c_double, byref
+from .colors import uicolor
 from .viewcore import ViewCore
 
 from .uikit import (

@@ -3,7 +3,6 @@ from datetime import date, datetime, time
 from rubicon.objc import CGSize, ns_from_py
 
 from .uikit import NSFontAttributeName, UIColor, UITableViewCell, UITableViewCellStyleValue1
-from .alerts import alert, confirm_dialog, hud_alert, input_alert, password_alert
 
 import ux
 from .core import dprint, waitModal, will_block
@@ -124,7 +123,6 @@ class dialogs():
         dtview = ux.DatePicker(mode=mode, style=style)
         dtview.name = title
         dtview.did_close = did_close
-        imgx = ux.Image.named('system:xmark')
         btnx = ux.ButtonItem(title='Cancel', action=close_selected)
         btndone = ux.ButtonItem(title='Done', action=done_selected)
         dtview.left_button_items = [btnx]
@@ -153,9 +151,6 @@ class dialogs():
         if will_block(callback):
             return None
 
-        parent = None
-        result = None
-        dsitems = {}
         item_type = 'list'
 
         def close_view(sender, result=None):
@@ -186,8 +181,6 @@ class dialogs():
                 return {'title': tb.data[row][1], 'subtitle': '', 'style': 'default', 'accessory': tb.data[row][2]}
             elif isinstance(item, dict):
                 title = item.get('title', '')
-                subtitle = item.get('title', '')
-                img = item.get('img', '')
                 accessory = item.get('accessory_type', '')
                 return {'title': title, 'subtitle': '', 'style': 'default', 'accessory': accessory}
             elif isinstance(item, str):
@@ -198,11 +191,11 @@ class dialogs():
             item = tb.data[row]
             result = item if item != '' else None
             if isinstance(item, list):
-                if fkitem != None:
+                if fkitem is not None:
                     fkitem['id'] = item[0]
                     fkitem['value'] = item[1]
 
-                if field != None:
+                if field is not None:
                     if callback:
                         field.text = item[1]
 
@@ -238,7 +231,6 @@ class dialogs():
 
         tb.did_close = did_close
         tb.delete_enabled = False
-        parentview = parent
         if frame:
             x, y, w, h = frame
             dprint('frame', frame)
@@ -246,9 +238,9 @@ class dialogs():
         else:
             winw, winh = ux.get_window_size()
             if winw < 580 or winh < 640:
-                x, y, w, h = (0, 0, winw, winh)
+                w, h = (winw, winh)
             else:
-                x, y, w, h = (0, 0, 580, 640)
+                w, h = (580, 640)
                 dprint('auto', frame)
 
         tb.controller.preferredContentSize = CGSize(w, h)
@@ -270,7 +262,6 @@ class dialogs():
         if will_block(callback):
             return None
 
-        result = {}
         form_title = title
         done_title = done_button_title
 
@@ -376,7 +367,7 @@ class dialogs():
                         list[i][2] = 'none'
 
                 ititle = item['title']
-                result = dialogs.list_dialog(title=ititle, items=list, fkitem=item, field=sender, frame=None, callback=list_end)
+                dialogs.list_dialog(title=ititle, items=list, fkitem=item, field=sender, frame=None, callback=list_end)
                 return False
 
             elif item['type'] in ('time', 'date', 'datetime', 'duration'):
@@ -523,7 +514,8 @@ class dialogs():
             update_kb_height(kbh)
 
         def update_kb_height(h):
-            if h < 0: h = 0
+            if h < 0:
+                h = 0
             form.content_inset = (0, 0, h, 0)
 
         container = ux.View()
@@ -546,16 +538,15 @@ class dialogs():
         else:
             winw, winh = ux.get_window_size()
             if winw < 580:
-                x, y, w, h = (0, 0, winw, winh)
+                w, h = (winw, winh)
             elif winh < 640:
-                x, y, w, h = (0, 0, winw, winh)
+                w, h = (winw, winh)
             else:
-                x, y, w, h = (0, 0, 580, 640)
+                w, h = (580, 640)
 
         i = 0
         fld = []
         fldvalues = []
-        fldidx = {}
         secrows = []
         secrowsall = []
         dprint('len', len(sections))
@@ -605,12 +596,12 @@ class dialogs():
 
                     value = item.get('value', datetime.now())
 
-                    if type(value) == str:
+                    if type(value) is str:
                         fld[i].text = item['value'][:10]
                     else:
-                        if type(value) == date:
+                        if type(value) is date:
                             value = datetime.combine(value, datetime.today().time())
-                        if type(value) == time:
+                        if type(value) is time:
                             value = datetime.combine(date.today(), value)
                         fld[i].dateobj = value
                         fld[i].text = value.strftime(fld[i].format)
@@ -626,7 +617,7 @@ class dialogs():
                     fld[i].textfield_should_begin_editing = did_begin
                 elif item['type'] == 'decimal':
                     fld[i] = ux.TextField()
-                    fld[i].text = '{:{align}.{prec}f}'.format(round(float(item.get('value', 0.00)), 2), width=7, align='<', prec=2)
+                    fld[i].text = '{:{align}.{prec}f}'.format(round(float(item.get('value', 0.00)), 2), align='<', prec=2)
                     fld[i].tag = i
                     fld[i].keyboard_type = ux.KEYBOARD_DECIMAL_PAD
                 elif item['type'] == 'check':
@@ -641,7 +632,7 @@ class dialogs():
                     print('%s is an invalid type parameter' % str(item['type']))
                     break
 
-                if not item['type'] in ('check', 'textarea', 'textview'):
+                if item['type'] not in ('check', 'textarea', 'textview'):
                     label_width, label_height = measure_string(item['title'], cellfont) #[0] + 16
                     dprint(item['title'], label_width, label_height)
                     if label_width > 180:

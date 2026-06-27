@@ -1,12 +1,5 @@
-from .font import *
-
 from .uikit import (
-    UIFont,
     UITableViewCell,
-    UITableViewCellEditingStyleDelete,
-    UITableViewCellEditingStyleInsert,
-    UITableViewCellEditingStyleNone,
-    UITableViewCellSeparatorStyleNone,
     UITableViewCellStyleDefault,
     UITableViewCellStyleSubtitle,
     UITableViewCellStyleValue1,
@@ -63,7 +56,7 @@ class TableViewCell():
                 self.native.contentView.bounds.origin.y,
                 self.native.contentView.bounds.size.width,
                 self.native.contentView.bounds.size.height)
-    
+
     @property
     def content_view(self):
         return self.native.contentView

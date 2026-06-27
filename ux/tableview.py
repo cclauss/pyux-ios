@@ -1,13 +1,13 @@
 from rubicon.objc import Block, NSPoint, ObjCClass, ObjCInstance, ObjCProtocol, SEL, ns_from_py, objc_method, objc_property, send_message, send_super
-from rubicon.objc.runtime import get_class
+from rubicon.objc.runtime import get_class, objc_id
 from ctypes import c_int
-from .tableviewcell import TableViewCell
-from .viewcore import *
-from .view import View
-from .core import dprint, asyncq, _in_background, in_background
-from .colors import *
-from .font import *
+from .core import asyncq, dprint
+from .colors import uicolor, uicolor_rgba
+from .font import Font
 from .menu import Action
+from .tableviewcell import TableViewCell
+from .view import View
+from .viewcore import ViewCore
 
 from .foundation import NSIndexPath
 
@@ -16,27 +16,21 @@ from .uikit import (
     UIColor,
     UIFont,
     UIControlEventValueChanged,
-    UIEdgeInsets,
-    UIEdgeInsetsMake,
-    UIImage,
     UIMenu,
     UIRefreshControl,
     UITableViewCell,
     UITableViewCellEditingStyleDelete,
     UITableViewCellEditingStyleInsert,
     UITableViewCellEditingStyleNone,
-    UITableViewCellSeparatorStyleNone,
     UITableViewCellStyleDefault,
     UITableViewCellStyleSubtitle,
     UITableViewCellStyleValue1,
     UITableViewCellStyleValue2,
     UITableViewController,
-    UITableViewRowAnimationLeft,
     UITableViewScrollPositionNone
 )
 
 UISearchController = ObjCClass('UISearchController')
-UIRefreshControl = ObjCClass('UIRefreshControl')
 UIBackgroundConfiguration = ObjCClass('UIBackgroundConfiguration')
 UITableViewDelegate = ObjCProtocol('UITableViewDelegate')
 UIContextMenuConfiguration = ObjCClass('UIContextMenuConfiguration')
@@ -235,7 +229,7 @@ class TableView(ViewCore):
 
     @allows_multiple_selection.setter
     def allows_multiple_selection(self, value):
-        if type(value) == bool:
+        if type(value) is bool:
             self.native.allowsMultipleSelection = value
 
     @property
@@ -244,7 +238,7 @@ class TableView(ViewCore):
 
     @allows_multiple_selection_during_editing.setter
     def allows_multiple_selection_during_editing(self, value):
-        if type(value) == bool:
+        if type(value) is bool:
             self.native.allowsMultipleSelectionDuringEditing = value
 
     @property
@@ -253,7 +247,7 @@ class TableView(ViewCore):
 
     @allows_selection.setter
     def allows_selection(self, value):
-        if type(value) == bool:
+        if type(value) is bool:
             self.native.allowsSelection = value
 
     @property
@@ -262,7 +256,7 @@ class TableView(ViewCore):
 
     @allows_selection_during_editing.setter
     def allows_selection_during_editing(self, value):
-        if type(value) == bool:
+        if type(value) is bool:
             self.native.allowsSelectionDuringEditing = value
 
     def begin_refresh(self):
@@ -278,7 +272,6 @@ class TableView(ViewCore):
         self.native.endUpdates()
 
     def refresh_data(self, sender):
-        time.sleep(2)
         self.controller.refreshControl.endRefreshing()
 
     @property
@@ -287,7 +280,7 @@ class TableView(ViewCore):
 
     @content_inset.setter
     def content_inset(self, value):
-        t, l, b, r = value
+        t, left, b, r = value
         def _async(_self):
             contentInset = self.native.contentInset
             contentInset.bottom = b
@@ -447,7 +440,7 @@ class TableView(ViewCore):
     def selected_row(self):
         rowset = []
         selected_rows = self.native.indexPathsForSelectedRows
-        if selected_rows == None:
+        if selected_rows is None:
             return None
         for item in selected_rows:
             section_row = ObjCInstance(item)
@@ -463,7 +456,7 @@ class TableView(ViewCore):
 
     @selected_row.setter
     def selected_row(self, index):
-        if type(index) == tuple:
+        if type(index) is tuple:
             index_path = NSIndexPath.indexPathForRow(index[1], inSection=index[0])
             self.native.selectRowAtIndexPath(index_path,
                 animated=True, scrollPosition=0
@@ -473,7 +466,7 @@ class TableView(ViewCore):
     def selected_rows(self):
         rowset = []
         selected_rows = self.native.indexPathsForSelectedRows
-        if selected_rows == None:
+        if selected_rows is None:
             return None
         for item in selected_rows:
             section_row = ObjCInstance(item)
@@ -680,8 +673,10 @@ class TableView(ViewCore):
             return UITableViewCellEditingStyleNone
 
     def tableview_context_menu(self, tableview, row):
-        if self.menu_items is None: return None
-        if len(self.menu_items) == 0: return None
+        if self.menu_items is None:
+            return None
+        if len(self.menu_items) == 0:
+            return None
         self.lastrow = row
         self.menublock = Block(self.create_menu, objc_id, (objc_id))
         menuconfig = UIContextMenuConfiguration.configurationWithIdentifier(str(row), previewProvider=None, actionProvider=self.menublock)
@@ -714,11 +709,11 @@ class TableView(ViewCore):
         #self.native.beginUpdates()
         for row in rows:
             dprint('delete', row)
-            if type(row) == tuple:
+            if type(row) is tuple:
                 rownum = row[1]
                 section = row[0]
                 index_path = NSIndexPath.indexPathForRow(rownum, inSection=section)
-            elif type(row) == int:
+            elif type(row) is int:
                 index_path = NSIndexPath.indexPathForRow(row, inSection=0)
             items.append(index_path)
 
@@ -731,11 +726,11 @@ class TableView(ViewCore):
         self.native.beginUpdates()
         for row in rows:
             dprint('delete', row)
-            if type(row) == tuple:
+            if type(row) is tuple:
                 rownum = row[1]
                 section = row[0]
                 index_path = NSIndexPath.indexPathForRow(rownum, inSection=section)
-            elif type(row) == int:
+            elif type(row) is int:
                 index_path = NSIndexPath.indexPathForRow(row, inSection=0)
             items.append(index_path)
 

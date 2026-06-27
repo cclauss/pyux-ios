@@ -1,8 +1,6 @@
-from rubicon.objc import CGSize, ObjCClass, objc_method
-from rubicon.objc.runtime import get_class
-from .core import asyncq, get_window_size, topvc, uxviews
-from .navigationview import *
-from .uikit import UITabBarController, UITabBarItem
+from rubicon.objc import CGSize
+from .core import asyncq, topvc
+from .uikit import UIColor, UITabBarController
 
 class TabBar():
 
@@ -45,4 +43,4 @@ class TabBar():
 
     def close(self, sender=None):
         self.controller.dismissViewControllerAnimated_completion_(True, None)
-        
+

@@ -1,8 +1,8 @@
 from rubicon.objc import CGSize, ObjCClass, objc_method
 from rubicon.objc.runtime import get_class
 from .core import asyncq, get_window_size, topvc, uxviews
-from .colors import *
-from .tabbar import *
+from .navigationview import get_vc
+from .tabbar import TabBar
 
 from .uikit import UIColor, UISplitViewController
 
@@ -96,7 +96,7 @@ class SplitView():
         # presentsWithGesture = displayMode != .oneBesideSecondary
         self.controller.maximumPrimaryColumnWidth = 100
 
-        self.controller.displayModeButtonVisibility = 2 ; # 0 = auto ;# 1 = always ;# 2 = never
+        self.controller.displayModeButtonVisibility = 2  # 0 = auto ;# 1 = always ;# 2 = never
         self.controller.showsSecondaryOnlyButton = False
         self.controller.collapsed = True
         self.controller.hideColumn(0)

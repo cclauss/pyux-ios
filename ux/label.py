@@ -1,12 +1,10 @@
 from rubicon.objc import CGRect, CGPoint, CGSize, py_from_ns
-from .colors import *
-from .font import *
+from .colors import uicolor, uicolor_rgba
+from .font import Font
 from .viewcore import ViewCore
 
 from .uikit import (
-    UIColor,
     UILabel,
-    NSTextAlignment,
     NSLineBreakByWordWrapping
 )
 

@@ -5,22 +5,19 @@ adapted from: https://github.com/mikaelho/pythonista-webview
 """
 
 from rubicon.objc import (
-    Block, CGRect, CGPoint, CGSize, NSObject, NSPoint, ObjCClass, ObjCInstance, ObjCProtocol, SEL,
-    ns_from_py, objc_method, objc_rawmethod, objc_property, py_from_ns, send_message, send_super
+    Block, NSObject, ObjCClass, ObjCInstance, ns_from_py, objc_method, objc_rawmethod, objc_property, py_from_ns
 )
-from rubicon.objc.runtime import get_class, objc_id, add_method
-from rubicon.objc.types import UnknownPointer, register_preferred_encoding
+from rubicon.objc.runtime import get_class, objc_id
 
-import webbrowser
-import queue, weakref, ctypes, functools, time, os, json, re, sys
-from types import SimpleNamespace
-from typing import Callable, Any
-from ctypes import c_void_p, c_int, c_ulong, c_char_p, Structure, addressof, CFUNCTYPE, byref, py_object
+import queue
+import ctypes
+import os
+import sys
+from ctypes import c_void_p, c_int, c_ulong, c_char_p, Structure
 from .alerts import alert, input_alert
-from .core import in_background, on_main_thread
+from .core import on_main_thread
 from .view import View
 
-from threading import Thread, current_thread, main_thread
 
 from .foundation import NSURL, NSURLRequest
 
@@ -28,10 +25,7 @@ from .uikit import (
     UIColor,
     WKWebView,
     WKWebViewConfiguration,
-    WKWebpagePreferences,
-    WKUserContentController,
-    WKUserScript,
-    WKWebsiteDataStore
+    WKUserScript
 )
 
 class _block_descriptor (Structure):
@@ -389,7 +383,8 @@ class WebView(View):
         message = str(ObjCInstance(_message))
         host = str(ObjCInstance(_frame).request.URL.host)
 
-        if host == 'None': host = 'Local'
+        if host == 'None':
+            host = 'Local'
         alert(host, message, 'Ok', hide_cancel_button=True, callback=_callback)
 
     def _javascript_confirm(self, _message, _frame, completionHandler):
@@ -409,7 +404,8 @@ class WebView(View):
         message = str(ObjCInstance(_message))
         host = str(ObjCInstance(_frame).request.URL.host)
 
-        if host == 'None': host = 'Local'
+        if host == 'None':
+            host = 'Local'
         alert(host, message, 'Ok', callback=_callback)
 
     def _javascript_prompt(self, _prompt, _text, _frame, completionHandler):
@@ -429,7 +425,8 @@ class WebView(View):
         prompt = str(ObjCInstance(_prompt))
         txt = str(ObjCInstance(_text))
         host = str(ObjCInstance(_frame).request.URL.host)
-        if host == 'None': host = 'Local'
+        if host == 'None':
+            host = 'Local'
         input_alert(prompt, txt, callback=_callback)
 
     def webview_should_start_load(self, webview, url, nav_type):

@@ -1,13 +1,12 @@
-from rubicon.objc import Block, SEL, ObjCClass, ObjCInstance, objc_method, py_from_ns, send_super
-from rubicon.objc.runtime import get_class, objc_id
-from ctypes import c_bool
-from .core import asyncq, dprint, in_background, topvc, uxthread, uxviews
-from .colors import *
-from .image import *
-from .navigationbar import *
-from .tabbar import *
-from .view import *
-from threading import Thread, current_thread, main_thread
+from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, ObjCInstance, SEL, ns_from_py, objc_method, py_from_ns, send_super
+from rubicon.objc.runtime import get_class
+from .buttonitem import ButtonItem
+from .core import asyncq, dprint, in_background, topvc, uxviews
+from .colors import uicolor
+from .image import Image
+from .navigationbar import NavigationBar, NavigationItem
+from .tabbar import TabBar
+from .view import View
 import time
 
 from .foundation import (
@@ -15,12 +14,12 @@ from .foundation import (
 )
 
 from .uikit import (
-    UIAction,
-    UIBarButtonItem,
+    UIColor,
     UINavigationController,
     UIViewController,
     UIKeyboardWillHideNotification,
     UIKeyboardWillShowNotification,
+    NSForegroundColorAttributeName,
     NSLayoutConstraint
 )
 
@@ -209,10 +208,9 @@ class NavigationView():
             title_color=None, orientations=None, hide_close_button=False,
             right_close_button=False, topbar=False, title=None, vc=None):
 
-        hide_close_btn = hide_close_button
-
         def _present(_self):
             top = topvc()
+            hide_close_btn = hide_close_button
 
             if not topbar:
 
@@ -238,7 +236,7 @@ class NavigationView():
                         self.controller.navigationBar.setTitleTextAttributes(ns_from_py(textAttributes))
 
                 if style == 'popover':
-                    hide_close_button = True
+                    hide_close_btn = True
 
                 if not hide_close_btn:
                     if right_close_button:
@@ -290,7 +288,6 @@ class NavigationView():
                 nbview.native.setTranslatesAutoresizingMaskIntoConstraints_(True)
 
                 img = Image.named('system:xmark')
-                img2 = Image.named('system:ellipsis.circle')
                 btnclose = ButtonItem(image=img, action=nbview.close)
                 navbar = NavigationBar()
                 if title_bar_color:
@@ -305,7 +302,6 @@ class NavigationView():
 
                 if not hide_close_btn:
                     img = Image.named('system:xmark')
-                    img2 = Image.named('system:ellipsis.circle')
                     btnclose = ButtonItem(image=img, action=nbview.close)
                     if right_close_button:
                         title1.right_button_items = [btnclose]
@@ -371,9 +367,9 @@ class NavigationView():
                     nbview.controller.setModalPresentationStyle_(2)
                 top.presentViewController_animated_completion_(nbview.controller, animated, None)
 
-        count = 0
         for i in range(10):
-            if self.controller: break
+            if self.controller:
+                break
             time.sleep(.2)
             dprint('--- navwait ---', i)
 

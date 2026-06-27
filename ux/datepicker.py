@@ -1,13 +1,13 @@
 from rubicon.objc import ObjCClass, SEL, ns_from_py, objc_method
 from rubicon.objc.runtime import get_class
-from .core import asyncq, on_main_thread, options, uxthread
+from .core import asyncq, options
 from .viewcore import ViewCore
 from .foundation import NSDateFormatter
 from .uikit import (
     UIControlEventValueChanged,
     UIDatePicker
 )
-from threading import Thread, current_thread, main_thread
+from threading import current_thread, main_thread
 import time
 
 def get_datefield():
@@ -73,12 +73,13 @@ class DatePicker(ViewCore):
             while not self.native:
                 time.sleep(.02)
                 count += 1
-                if count == 5: break
+                if count == 5:
+                    break
         else:
             _init(None)
 
     def action(self, datepicker):
-        datestr = str(datepicker.native.date)[:10]
+        pass
 
     @property
     def enabled(self) -> bool:

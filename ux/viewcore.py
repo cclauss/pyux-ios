@@ -1,11 +1,8 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ObjCInstance, objc_method
-from ctypes import c_void_p
-from .buttonitem import *
-from .colors import *
-from .core import asyncq, convert_rect, dprint, in_background, topvc, uxviews, waitModal, will_block
-from .image import Image
+from rubicon.objc import CGRect, CGPoint, CGSize, ObjCInstance
+from .core import asyncq, convert_rect, dprint, topvc, waitModal, will_block
+from .colors import uicolor, uicolor_rgba
 from .uikit import UIColor
-from threading import Thread, current_thread, main_thread
+from threading import current_thread
 
 UIViewAutoresizingNone = 0
 UIViewAutoresizingFlexibleLeftMargin = 1 << 0
@@ -142,7 +139,7 @@ class ViewCore():
 
     def ensure_vc(self):
         if not self.controller:
-            from .navigationview import NavigationView, get_vc
+            from .navigationview import get_vc
             vcclass = get_vc()
             self.controller = vcclass.alloc().init()
             self.controller.interface = self
@@ -152,12 +149,18 @@ class ViewCore():
     def flex(self):
         flexstr = ''
         mask = self.native.autoresizingMask
-        if mask & UIViewAutoresizingFlexibleLeftMargin > 0: flexstr += 'L'
-        if mask & UIViewAutoresizingFlexibleWidth > 0: flexstr += 'W'
-        if mask & UIViewAutoresizingFlexibleRightMargin > 0: flexstr += 'R'
-        if mask & UIViewAutoresizingFlexibleTopMargin > 0: flexstr += 'T'
-        if mask & UIViewAutoresizingFlexibleHeight > 0: flexstr += 'H'
-        if mask & UIViewAutoresizingFlexibleBottomMargin > 0: flexstr += 'B'
+        if mask & UIViewAutoresizingFlexibleLeftMargin > 0:
+            flexstr += 'L'
+        if mask & UIViewAutoresizingFlexibleWidth > 0:
+            flexstr += 'W'
+        if mask & UIViewAutoresizingFlexibleRightMargin > 0:
+            flexstr += 'R'
+        if mask & UIViewAutoresizingFlexibleTopMargin > 0:
+            flexstr += 'T'
+        if mask & UIViewAutoresizingFlexibleHeight > 0:
+            flexstr += 'H'
+        if mask & UIViewAutoresizingFlexibleBottomMargin > 0:
+            flexstr += 'B'
         return flexstr
 
     @flex.setter
@@ -333,7 +336,7 @@ class ViewCore():
         return tuple(views)
 
     def wait_modal(self):
-        if will_block(callback):
+        if will_block(None):
             return None
 
         self.modal = waitModal()
@@ -401,7 +404,8 @@ class ViewCore():
                         dprint('sv', sv.height)
                         dprint(r)
                         h = round(ty + th - r[1],2)
-                        if h < 0: h = 0
+                        if h < 0:
+                            h = 0
                         dprint('kbh', h)
                         sv.content_inset = (0, 0, h, 0)
 

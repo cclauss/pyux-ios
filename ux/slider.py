@@ -4,10 +4,8 @@ from .viewcore import ViewCore
 
 from .uikit import (
     UIControlEventTouchCancel,
-    UIControlEventTouchDown,
     UIControlEventTouchUpInside,
     UIControlEventTouchUpOutside,
-    UIControlEventValueChanged,
     UISlider
 )
 

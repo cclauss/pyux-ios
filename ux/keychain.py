@@ -4,17 +4,16 @@
 adapted from: https://gist.github.com/zrzka/d1da1dccd626643526747407a0e35135
 """
 
-import sys, os, plistlib, time
-from ctypes import c_int, c_void_p, POINTER, byref, c_ulong, c_bool, cdll, util, string_at
+import sys
+import os
+import plistlib
+from ctypes import c_int, c_void_p, POINTER, byref, c_ulong, cdll
 
 from rubicon.objc import ns_from_py, py_from_ns, ObjCClass, ObjCInstance
-from rubicon.objc.api import NSArray, NSData, NSDictionary, NSString, NSNumber
+from rubicon.objc.api import NSArray, NSDictionary
 from rubicon.objc.runtime import load_library
 
 from enum import Enum, IntFlag
-from typing import Union
-import datetime
-from os.path import basename
 
 load_library('Foundation')
 c = cdll.LoadLibrary(None)
@@ -325,7 +324,6 @@ def reset_keychain():
 
 
 def sec_item_add(attributes: dict) -> None:
-    ptr = CFTypeRef()
     raise_status(
         SecItemAdd(ns_from_py(attributes), None),
         'Failed to add keychain item'

@@ -1,10 +1,7 @@
-import time
 from rubicon.objc import ObjCClass, objc_method
 from rubicon.objc.runtime import get_class
-from .core import asyncq, dprint
+from .core import dprint
 from .viewcore import ViewCore
-from .navigationview import *
-from .buttonitem import *
 
 from .uikit import UIView
 

@@ -1,20 +1,12 @@
 from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, objc_method, py_from_ns, send_message
 from rubicon.objc.runtime import get_class
-from ctypes import c_bool, c_int
-from .colors import *
-from .core import asyncq, convert_point, rootvc
-from .font import *
+from ctypes import c_int
+from .core import asyncq
+from .colors import uicolor, uicolor_rgba
+from .font import Font
 from .viewcore import ViewCore
 
 from .uikit import (
-    NSLayoutAttributeBottom,
-    NSLayoutAttributeLeading,
-    NSLayoutAttributeTop,
-    NSLayoutAttributeTrailing,
-    NSLayoutConstraint,
-    NSLayoutRelationEqual,
-    UIDevice,
-    UILabel,
     UITextInputTraits,
     UITextView
 )
@@ -106,7 +98,8 @@ class TextView(ViewCore):
 
     def update_kb_height(self, h):
         #print( '-- update keyboard --', h)
-        if h < 0: h = 0
+        if h < 0:
+            h = 0
         self.content_inset = (0, 0, h, 0)
 
     @property
@@ -115,7 +108,7 @@ class TextView(ViewCore):
 
     @content_inset.setter
     def content_inset(self, value):
-        t, l, b, r = value
+        t, left, b, r = value
         def _async(_self):
             contentInset = self.native.contentInset
             contentInset.bottom = b
@@ -184,7 +177,7 @@ class TextView(ViewCore):
     @autocorrection_type.setter
     def autocorrection_type(self, value):
         autotype = 0
-        if type(value) == bool:
+        if type(value) is bool:
             if value:
                 autotype = 2
             else:
@@ -267,7 +260,7 @@ class TextView(ViewCore):
     @spellchecking_type.setter
     def spellchecking_type(self, value):
         spellcheck = 0
-        if type(value) == bool:
+        if type(value) is bool:
             if value:
                 spellcheck = 2
             else:

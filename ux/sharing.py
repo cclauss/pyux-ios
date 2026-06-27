@@ -3,10 +3,6 @@ from .core import asyncq, topvc
 
 from .foundation import NSURL
 
-from .uikit import (
-    UIControlEventValueChanged,
-    UIDocumentPickerViewController
-)
 
 NSItemProvider = ObjCClass("NSItemProvider")
 UIActivityItemsConfiguration = ObjCClass("UIActivityItemsConfiguration")

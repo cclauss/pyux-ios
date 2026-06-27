@@ -356,9 +356,13 @@ class FilesView():
     
 
 navviews = []
-rootpath = os.path.expanduser('~')
-localpath = os.path.expanduser('~/Documents')
-localpath = os.path.expanduser('~')
+if py3kit:
+    # pythonista
+    rootpath = os.path.expanduser('~')
+    localpath = os.path.expanduser('~')
+else:
+    rootpath = os.path.expanduser('~/Documents')
+    localpath = os.path.expanduser('~/Documents')
 
 print(localpath)
 fileops = FileOps()

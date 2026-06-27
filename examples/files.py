@@ -356,7 +356,7 @@ class FilesView():
     
 
 navviews = []
-if py3kit:
+if ux.py3kit:
     # pythonista
     rootpath = os.path.expanduser('~')
     localpath = os.path.expanduser('~')

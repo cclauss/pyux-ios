@@ -53,7 +53,7 @@ def install_pkg(pkg_file):
 
 def get_pyux():
     print('Installing pyux-ios...')
-    url = 'https://raw.githubusercontent.com/sbbosco/pyux-ios/main/dist/pyux_ios-1.0.1-py3-none-any.whl'
+    url = 'https://raw.githubusercontent.com/sbbosco/pyux-ios/main/dist/pyux_ios-1.0.3-py3-none-any.whl'
     print(url)
     r = requests.get(url)
     if r.status_code == 200:

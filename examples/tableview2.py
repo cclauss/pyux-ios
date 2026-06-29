@@ -1,7 +1,5 @@
-import sys, os, json
+import json
 import ux
-from ux.dialogs import dialogs
-import ux.alerts as console
 
 with open('uxdocs.json') as in_file:
     uxdocs = json.load(in_file)

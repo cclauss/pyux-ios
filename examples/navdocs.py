@@ -213,7 +213,6 @@ class TableView1():
     def table_did_select(self, sender):
         print('row %d selected' % self.tv.selected_rows[0][1])
         section, row = self.tv.selected_row
-        _key = self.dsitems[row]['key']
         self.table2.key = self.dsitems[row]['key']
         self.table2.refresh()
         self.nav.push_view(self.table2.tv)

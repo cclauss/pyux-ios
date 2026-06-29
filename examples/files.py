@@ -22,7 +22,7 @@ class FileOps (object):
         tv.reload_data()
         
     def newfile(self, newtype, dirpath, newname):
-        newfile = _full = os.path.join(dirpath, newname)
+        newfile = os.path.join(dirpath, newname)
         try:
             if newtype == 'folder':
                 try:
@@ -75,7 +75,6 @@ class FileOps (object):
         self.CutCopy = None
         r = 0
         for row in self.filelist:
-            _filepart = row[1]
             destpath = path + os.sep + row[1]
             try:
                 if row[2]==0:
@@ -141,8 +140,6 @@ class FilesView():
         
     def reload(self, path):        
         # Refresh the list of files and folders
-        _dsfolders = []
-        _dsfiles = []
         self.tv.data = []
         try:
             _, folders, files = next(os.walk(path))
@@ -236,7 +233,7 @@ class FilesView():
         list = [[row, 'Cut', 'none'], [row, "Copy", 'none'], [row, "Paste", 'none'],
             [row, "Rename", 'none'], [row, "New", 'none'], [0, "Refresh", 'none']]
 
-        _result = dialogs.list_dialog(title='Acions', items=list, fkitem=None, field=tableview, frame=None, callback=self.actions)
+        dialogs.list_dialog(title='Acions', items=list, fkitem=None, field=tableview, frame=None, callback=self.actions)
     
     def btn_action(self, sender, args=None):
         action = sender.Header if sys.platform == 'win32' else sender.title
@@ -347,7 +344,6 @@ class FilesView():
     def filelist(self, tv):
         filelist = []
         for item in tv.selected_rows:
-            _section = item[0]
             row = item[1]
             name = self.tv.data[row]['title']
             if name == '..': continue

@@ -10,7 +10,7 @@ def prompt_value1(sender):
             keychain.set_password('pyux', 'demo1', result)
             console.hud_alert(result, icon='success', duration=1.5)
 
-    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret1a', callback=_callback)
+    console.input_alert('Keychain data', 'Save to keychain', 'secret1a', callback=_callback)
 
 
 def prompt_value2(sender):
@@ -21,7 +21,7 @@ def prompt_value2(sender):
             keychain.set_password('pyux', 'demo2', result, authentication=None)
             console.hud_alert(result, icon='success', duration=1.5)
 
-    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret2a', callback=_callback)
+    console.input_alert('Keychain data', 'Save to keychain', 'secret2a', callback=_callback)
 
 def prompt_biometric1(sender):
     """
@@ -38,7 +38,7 @@ def prompt_biometric1(sender):
             keychain.set_password('pyux', 'demo1', result, authentication='biometric')
             console.hud_alert(result, icon='success', duration=1.5)
 
-    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret1b', callback=_callback)
+    console.input_alert('Keychain data', 'Save to keychain', 'secret1b', callback=_callback)
 
 def prompt_biometric2(sender):
 

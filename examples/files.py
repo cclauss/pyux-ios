@@ -245,7 +245,8 @@ class FilesView():
         self.actions([row, title])
     
     def actions(self, result):
-        if not result: return
+        if not result:
+            return
         row = result[0]
         action = result[1]
         if action == 'Refresh':
@@ -254,7 +255,7 @@ class FilesView():
         elif action == 'New':
             fields = [{'key': 'name', 'title': 'New dir', 'type': 'text', 'value':'newdir'}]
             newname = dialogs.form_dialog(title='New dir', fields=fields, callback=self.do_new)
-            if newname != None:
+            if newname is not None:
                 result = fileops.newfile('folder', self.path, newname['name'])
                 if result == 'ok':
                     self.refresh(self.path)
@@ -263,7 +264,8 @@ class FilesView():
         
         elif action == 'Rename':
             self.filelist(self.tv)
-            if len(fileops.filelist) == 0: return 
+            if len(fileops.filelist) == 0:
+                return 
             namepart = fileops.filelist[0][1]
             fileops.filelist = []
             fields = [{'key': 'name', 'title': 'Rename', 'type': 'text', 'value':namepart},
@@ -290,10 +292,11 @@ class FilesView():
             result = fileops.copy()
                 
         elif action == 'Paste':
-            if len(fileops.filelist) == 0: return
+            if len(fileops.filelist) == 0:
+                return
             result = fileops.paste(self.path)
             if result == 'ok':
-                if fileops.cutview != None:
+                if fileops.cutview is not None:
                     fileops.cutview.refresh(fileops.cutview.path)
                 self.refresh(self.path)
                 
@@ -313,7 +316,7 @@ class FilesView():
                 
     def do_rename(self, response):
         print('rename', response)
-        if response != None:
+        if response is not None:
             fullfile = self.path + os.sep + response['namepart']
             fullnew = self.path + os.sep + response['name']
             try:
@@ -324,7 +327,7 @@ class FilesView():
             
     def do_new(self, response):
         print('new dir', response)
-        if response != None:
+        if response is not None:
             result = fileops.newfile('folder', self.path, response['name'])
             if result == 'ok':
                 self.refresh(self.path)
@@ -334,7 +337,8 @@ class FilesView():
     def filelist1(self, row):
         filelist = []
         name = self.tv.data[row]['title']
-        if name == '..': return
+        if name == '..':
+            return
         if self.tv.data[row]['type'] == 'folder':
             filelist.append([self.path, name, 0])
         else:
@@ -346,7 +350,8 @@ class FilesView():
         for item in tv.selected_rows:
             row = item[1]
             name = self.tv.data[row]['title']
-            if name == '..': continue
+            if name == '..':
+                continue
             if self.tv.data[row]['type'] == 'folder':
                 filelist.append([self.path, name, 0])
             else:

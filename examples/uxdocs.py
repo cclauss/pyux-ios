@@ -218,7 +218,7 @@ class TableView1():
     def table_did_select(self, sender):
         print('row %d selected' % self.tv.selected_rows[0][1])
         section, row = self.tv.selected_row
-        key = self.dsitems[row]['key']
+        _key = self.dsitems[row]['key']
         self.parent.table2.key = self.dsitems[row]['key']
         self.parent.table2.refresh()
         self.parent.show_supplementary(None)

@@ -13,4 +13,4 @@ jobs:
           ignore_words_list: parms
       - uses: astral-sh/ruff-action@v4.0.0
         with:
-          args: check --ignore=E401,E701,E711,E722,F401,F403,F841
+          args: check --ignore=E701,E711,E722,F403

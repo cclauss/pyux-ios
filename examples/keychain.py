@@ -10,7 +10,7 @@ def prompt_value1(sender):
             keychain.set_password('pyux', 'demo1', result)
             console.hud_alert(result, icon='success', duration=1.5)
 
-    result = console.input_alert('Keychain data', 'Save to keychain', 'secret1a', callback=_callback)
+    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret1a', callback=_callback)
 
 
 def prompt_value2(sender):
@@ -21,7 +21,7 @@ def prompt_value2(sender):
             keychain.set_password('pyux', 'demo2', result, authentication=None)
             console.hud_alert(result, icon='success', duration=1.5)
 
-    result = console.input_alert('Keychain data', 'Save to keychain', 'secret2a', callback=_callback)
+    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret2a', callback=_callback)
 
 def prompt_biometric1(sender):
     """
@@ -38,7 +38,7 @@ def prompt_biometric1(sender):
             keychain.set_password('pyux', 'demo1', result, authentication='biometric')
             console.hud_alert(result, icon='success', duration=1.5)
 
-    result = console.input_alert('Keychain data', 'Save to keychain', 'secret1b', callback=_callback)
+    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret1b', callback=_callback)
 
 def prompt_biometric2(sender):
 
@@ -48,7 +48,7 @@ def prompt_biometric2(sender):
             keychain.set_password('pyux', 'demo2', result, authentication='biometric')
             console.hud_alert(result, icon='success', duration=1.5)
 
-    result = console.input_alert('Keychain data', 'Save to keychain', 'secret2b', callback=_callback)
+    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret2b', callback=_callback)
 
 def get_values(sender):
     """
@@ -122,7 +122,3 @@ b5.action = get_values
 view.add_subview(b5)
 
 view.present('sheet', title_bar_color='black', title_color='white', right_close_button=True)
-
-
-
-

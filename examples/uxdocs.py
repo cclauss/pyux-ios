@@ -1,5 +1,6 @@
-import sys, os, json
-import configparser, collections
+import json
+import configparser
+import collections
 
 import ux
 

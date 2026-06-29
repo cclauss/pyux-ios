@@ -53,7 +53,6 @@ def input_callback(sender):
 @ux.in_background
 def password_modal(sender):
     print('password modal dialog...')
-    actions = [[1, 'Add', 'none'], [2, 'Edit', 'checkmark'], [3, 'Delete', 'none']]
     result = console.password_alert('Password Alert', 'Enter your password')
     print('result', result)
 
@@ -76,7 +75,7 @@ def login_callback(sender):
         else:
             print('Canceled')
     
-    result = ux.login_alert('Login', 'Enter your credentials?', callback=_callback)
+    ux.login_alert('Login', 'Enter your credentials?', callback=_callback)
 
 def confirm_callback(sender):
     print('confirm callback...')
@@ -88,7 +87,7 @@ def confirm_callback(sender):
         else:
             print('Canceled')
     
-    result = ux.confirm_dialog('Delete', 'Are you sure?', callback=_callback)
+    ux.confirm_dialog('Delete', 'Are you sure?', callback=_callback)
     
     
 w, h = ux.get_window_size()    

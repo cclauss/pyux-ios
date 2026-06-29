@@ -22,7 +22,7 @@ class FileOps (object):
         tv.reload_data()
         
     def newfile(self, newtype, dirpath, newname):
-        newfile = full = os.path.join(dirpath, newname)
+        newfile = os.path.join(dirpath, newname)
         try:
             if newtype == 'folder':
                 try:
@@ -37,7 +37,7 @@ class FileOps (object):
                     f.close()
                 except IOError:
                     return 'error'
-        except:
+        except Exception:
             return 'error'
         return 'ok'
 
@@ -64,7 +64,7 @@ class FileOps (object):
                     shutil.move(row[0] + os.sep + row[1], path + os.sep + row[1])
                 else:
                     shutil.move(row[0] + os.sep + row[1], path)
-            except:
+            except Exception:
                 print("Exception: ",str(sys.exc_info()))
                 console.hud_alert(str(sys.exc_info()))
                 return 'error'
@@ -75,14 +75,13 @@ class FileOps (object):
         self.CutCopy = None
         r = 0
         for row in self.filelist:
-            filepart = row[1]
             destpath = path + os.sep + row[1]
             try:
                 if row[2]==0:
                     shutil.copytree(row[0] + os.sep + row[1], destpath)
                 else:
                     shutil.copy2(row[0] + os.sep + row[1], destpath)
-            except:
+            except Exception:
                 console.hud_alert(str(sys.exc_info()))
                 print(path)
                 print(self.filelist)
@@ -105,10 +104,10 @@ class FileOps (object):
                 else:
                     # delete file
                     os.remove(row[0] + os.sep + row[1])
-            except:
+            except Exception:
                 print("Exception ",str(sys.exc_info()))
                 return 'error'
-\
+
         self.filelist = []
         return 'ok'
 
@@ -141,12 +140,10 @@ class FilesView():
         
     def reload(self, path):        
         # Refresh the list of files and folders
-        dsfolders = []
-        dsfiles = []
         self.tv.data = []
         try:
             _, folders, files = next(os.walk(path))
-        except:
+        except Exception:
             print('access denied')
             console.hud_alert('access denied')
             return
@@ -236,7 +233,7 @@ class FilesView():
         list = [[row, 'Cut', 'none'], [row, "Copy", 'none'], [row, "Paste", 'none'],
             [row, "Rename", 'none'], [row, "New", 'none'], [0, "Refresh", 'none']]
 
-        result = dialogs.list_dialog(title='Acions', items=list, fkitem=None, field=tableview, frame=None, callback=self.actions)
+        dialogs.list_dialog(title='Acions', items=list, fkitem=None, field=tableview, frame=None, callback=self.actions)
     
     def btn_action(self, sender, args=None):
         action = sender.Header if sys.platform == 'win32' else sender.title
@@ -321,7 +318,7 @@ class FilesView():
             fullnew = self.path + os.sep + response['name']
             try:
                 os.rename(fullfile,fullnew)
-            except:
+            except Exception:
                 console.hud_alert('error')
             self.refresh(self.path)
             
@@ -347,7 +344,6 @@ class FilesView():
     def filelist(self, tv):
         filelist = []
         for item in tv.selected_rows:
-            section = item[0]
             row = item[1]
             name = self.tv.data[row]['title']
             if name == '..': continue

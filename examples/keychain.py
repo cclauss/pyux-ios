@@ -48,7 +48,7 @@ def prompt_biometric2(sender):
             keychain.set_password('pyux', 'demo2', result, authentication='biometric')
             console.hud_alert(result, icon='success', duration=1.5)
 
-    _result = console.input_alert('Keychain data', 'Save to keychain', 'secret2b', callback=_callback)
+    console.input_alert('Keychain data', 'Save to keychain', 'secret2b', callback=_callback)
 
 def get_values(sender):
     """

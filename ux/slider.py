@@ -1,13 +1,14 @@
 from rubicon.objc import SEL, ObjCClass, objc_method
 from rubicon.objc.runtime import get_class
-from .viewcore import ViewCore
 
 from .uikit import (
     UIControlEventTouchCancel,
     UIControlEventTouchUpInside,
     UIControlEventTouchUpOutside,
-    UISlider
+    UISlider,
 )
+from .viewcore import ViewCore
+
 
 def get_slider():
     if get_class('uxSlider').value is not None:

@@ -1,6 +1,6 @@
 from .image import Image
-from .view import View
 from .tableviewcell import TableViewCell
+from .view import View
 
 basestring = str
 

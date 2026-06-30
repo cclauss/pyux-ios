@@ -3,8 +3,9 @@ from .uikit import (
     UITableViewCellStyleDefault,
     UITableViewCellStyleSubtitle,
     UITableViewCellStyleValue1,
-    UITableViewCellStyleValue2
+    UITableViewCellStyleValue2,
 )
+
 
 class TableViewCell():
     def __init__(self, style='default', **kwargs):

@@ -1,5 +1,7 @@
+from ctypes import byref, c_double
+
 from .uikit import UIColor
-from ctypes import c_double, byref
+
 
 def uicolor(color):
     if isinstance(color, str):

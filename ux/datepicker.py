@@ -1,14 +1,14 @@
-from rubicon.objc import ObjCClass, SEL, ns_from_py, objc_method
-from rubicon.objc.runtime import get_class
-from .core import asyncq, options
-from .viewcore import ViewCore
-from .foundation import NSDateFormatter
-from .uikit import (
-    UIControlEventValueChanged,
-    UIDatePicker
-)
-from threading import current_thread, main_thread
 import time
+from threading import current_thread, main_thread
+
+from rubicon.objc import SEL, ObjCClass, ns_from_py, objc_method
+from rubicon.objc.runtime import get_class
+
+from .core import asyncq, options
+from .foundation import NSDateFormatter
+from .uikit import UIControlEventValueChanged, UIDatePicker
+from .viewcore import ViewCore
+
 
 def get_datefield():
     if get_class('uxDatePicker').value is not None:

@@ -1,8 +1,10 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ObjCInstance
-from .core import asyncq, convert_rect, dprint, topvc, waitModal, will_block
-from .colors import uicolor, uicolor_rgba
-from .uikit import UIColor
 from threading import current_thread
+
+from rubicon.objc import CGPoint, CGRect, CGSize, ObjCInstance
+
+from .colors import uicolor, uicolor_rgba
+from .core import asyncq, convert_rect, dprint, topvc, waitModal, will_block
+from .uikit import UIColor
 
 UIViewAutoresizingNone = 0
 UIViewAutoresizingFlexibleLeftMargin = 1 << 0

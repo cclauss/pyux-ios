@@ -1,6 +1,6 @@
-import json
-import configparser
 import collections
+import configparser
+import json
 
 import ux
 

@@ -1,10 +1,10 @@
 import time
+
 from rubicon.objc import NSMakeSize
+
+from .uikit import UIScrollView
 from .viewcore import ViewCore
 
-from .uikit import (
-    UIScrollView
-)
 
 class ScrollView(ViewCore):
     def __init__(self, **kwargs):

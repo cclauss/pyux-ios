@@ -1,10 +1,8 @@
 from rubicon.objc import Block, ObjCInstance
 from rubicon.objc.runtime import objc_id
 
-from .uikit import (
-    UIAction,
-    UIMenu
-)
+from .uikit import UIAction, UIMenu
+
 
 class Action:
 

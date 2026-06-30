@@ -1,11 +1,8 @@
 from enum import Enum
+
+from .uikit import NSLayoutConstraint, UILayoutConstraintAxis, UIStackView
 from .viewcore import ViewCore
 
-from .uikit import (
-    NSLayoutConstraint,
-    UILayoutConstraintAxis,
-    UIStackView
-)
 
 class UIStackViewAlignment(Enum):
     Fill = 0

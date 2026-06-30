@@ -4,16 +4,15 @@
 adapted from: https://gist.github.com/zrzka/d1da1dccd626643526747407a0e35135
 """
 
-import sys
 import os
 import plistlib
-from ctypes import c_int, c_void_p, POINTER, byref, c_ulong, cdll
+import sys
+from ctypes import POINTER, byref, c_int, c_ulong, c_void_p, cdll
+from enum import Enum, IntFlag
 
-from rubicon.objc import ns_from_py, py_from_ns, ObjCClass, ObjCInstance
+from rubicon.objc import ObjCClass, ObjCInstance, ns_from_py, py_from_ns
 from rubicon.objc.api import NSArray, NSDictionary
 from rubicon.objc.runtime import load_library
-
-from enum import Enum, IntFlag
 
 load_library('Foundation')
 c = cdll.LoadLibrary(None)

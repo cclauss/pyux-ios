@@ -1,7 +1,9 @@
 import os
 import runpy
 import time
+
 import ux
+
 
 class Launcher():
     
@@ -34,8 +36,8 @@ class Launcher():
         self.dsitems = []
         try:
             _, folders, files = next(os.walk(self.path))
-        except:
-            print('access denied')
+        except Exception as e:
+            print(f'access denied: {e}')
             return
         
         files = sorted(files, key=lambda s: s.lower())

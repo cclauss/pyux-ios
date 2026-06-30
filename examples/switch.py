@@ -2,6 +2,7 @@ from threading import current_thread
 
 import ux
 
+
 @ux.in_background
 def btnpress(sender):
     print('button clicked')

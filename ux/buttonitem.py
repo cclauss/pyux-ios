@@ -1,12 +1,13 @@
 from rubicon.objc import Block
 from rubicon.objc.runtime import objc_id
-from .menu import Menu
 
+from .menu import Menu
 from .uikit import (
     UIAction,
     UIBarButtonItem,
     UIBarButtonSystemItem,
 )
+
 
 class ButtonItem():
     def __init__(self, title=None, image=None, action=None, menu=None, enabled=True, tint_color=None):

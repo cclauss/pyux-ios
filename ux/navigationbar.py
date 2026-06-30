@@ -1,14 +1,16 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ns_from_py
-from ctypes import c_double, byref
-from .colors import uicolor
-from .viewcore import ViewCore
+from ctypes import byref, c_double
 
+from rubicon.objc import CGPoint, CGRect, CGSize, ns_from_py
+
+from .colors import uicolor
 from .uikit import (
     NSForegroundColorAttributeName,
     UIColor,
     UINavigationBar,
-    UINavigationItem
+    UINavigationItem,
 )
+from .viewcore import ViewCore
+
 
 class NavigationItem():
     def __init__(self, title='Navbar.Title'):

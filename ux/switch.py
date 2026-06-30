@@ -1,11 +1,9 @@
 from rubicon.objc import SEL, ObjCClass, objc_method
 from rubicon.objc.runtime import get_class
+
+from .uikit import UIControlEventValueChanged, UISwitch
 from .viewcore import ViewCore
 
-from .uikit import (
-    UIControlEventValueChanged,
-    UISwitch
-)
 
 def get_switch():
     if get_class('uxSwitch').value is not None:

@@ -1,18 +1,23 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, SEL, objc_method, py_from_ns
-from rubicon.objc.runtime import get_class
-from ctypes import c_double, byref
+from ctypes import byref, c_double
 from typing import Callable
+
+from rubicon.objc import (
+    SEL,
+    CGPoint,
+    CGRect,
+    CGSize,
+    ObjCClass,
+    objc_method,
+    py_from_ns,
+)
+from rubicon.objc.runtime import get_class
+
 from .colors import uicolor
+from .core import _in_background, dprint
 from .font import Font
-from .core import dprint, _in_background
+from .uikit import UIButton, UIColor, UIControlEventTouchDown, UIControlStateNormal
 from .viewcore import ViewCore
 
-from .uikit import (
-    UIButton,
-    UIColor,
-    UIControlEventTouchDown,
-    UIControlStateNormal
-)
 
 def get_button():
     if get_class('uxButton').value is not None:

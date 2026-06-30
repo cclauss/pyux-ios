@@ -1,22 +1,23 @@
-import sys
 import os
+import sys
 import time
 from collections import namedtuple
-from rubicon.objc import Block, CGRect, CGPoint, CGSize, ObjCClass, ObjCInstance
-from rubicon.objc.runtime import libobjc, objc_block, objc_id, load_library
-from rubicon.objc.types import NSTimeInterval
 from ctypes import Structure, byref, cast
-from threading import Thread, current_thread, Semaphore
-#print(__version__)
+from threading import Semaphore, Thread, current_thread
 
+from rubicon.objc import Block, CGPoint, CGRect, CGSize, ObjCClass, ObjCInstance
+from rubicon.objc.runtime import libobjc, load_library, objc_block, objc_id
+from rubicon.objc.types import NSTimeInterval
+
+#print(__version__)
 from .uikit import (
     UIApplication,
     UIDevice,
     UIScreen,
-    UIView,
     UIUserInterfaceIdiom,
+    UIUserInterfaceSizeClass,
     UIUserInterfaceStyle,
-    UIUserInterfaceSizeClass
+    UIView,
 )
 
 uxviews = []

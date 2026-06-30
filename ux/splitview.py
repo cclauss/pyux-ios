@@ -1,10 +1,11 @@
 from rubicon.objc import CGSize, ObjCClass, objc_method
 from rubicon.objc.runtime import get_class
+
 from .core import asyncq, get_window_size, topvc, uxviews
 from .navigationview import get_vc
 from .tabbar import TabBar
-
 from .uikit import UIColor, UISplitViewController
+
 
 def get_splitview():
     if get_class('uxSplitView').value is not None:

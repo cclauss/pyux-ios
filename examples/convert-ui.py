@@ -1,9 +1,10 @@
 import time
 
 import ux as ui
-from ux.dialogs import dialogs
 import ux.alerts as console
 import ux.keychain as keychain
+from ux.dialogs import dialogs
+
 
 @ui.in_background
 def prompt_value(sender):

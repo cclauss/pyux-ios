@@ -4,29 +4,31 @@
 adapted from: https://github.com/mikaelho/pythonista-webview
 """
 
+import ctypes
+import os
+import queue
+import sys
+from ctypes import Structure, c_char_p, c_int, c_ulong, c_void_p
+
 from rubicon.objc import (
-    Block, NSObject, ObjCClass, ObjCInstance, ns_from_py, objc_method, objc_rawmethod, objc_property, py_from_ns
+    Block,
+    NSObject,
+    ObjCClass,
+    ObjCInstance,
+    ns_from_py,
+    objc_method,
+    objc_property,
+    objc_rawmethod,
+    py_from_ns,
 )
 from rubicon.objc.runtime import get_class, objc_id
 
-import queue
-import ctypes
-import os
-import sys
-from ctypes import c_void_p, c_int, c_ulong, c_char_p, Structure
 from .alerts import alert, input_alert
 from .core import on_main_thread
+from .foundation import NSURL, NSURLRequest
+from .uikit import UIColor, WKUserScript, WKWebView, WKWebViewConfiguration
 from .view import View
 
-
-from .foundation import NSURL, NSURLRequest
-
-from .uikit import (
-    UIColor,
-    WKWebView,
-    WKWebViewConfiguration,
-    WKUserScript
-)
 
 class _block_descriptor (Structure):
     _fields_ = [

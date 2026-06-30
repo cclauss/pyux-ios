@@ -1,6 +1,4 @@
 __version__ = '1.0.3'
-from .foundation import *
-from .uikit import *
 from .activity import *
 from .alerts import *
 from .button import *
@@ -9,17 +7,17 @@ from .core import *
 from .datepicker import *
 from .filepicker import *
 from .font import *
+from .foundation import *
 from .image import *
 from .label import *
 from .listdatasource import *
 from .menu import *
-from .viewcore import *
 from .navigationbar import *
 from .navigationview import *
 from .scrollview import *
-from .slider import *
 from .segmented import *
 from .sharing import *
+from .slider import *
 from .splitview import *
 from .stackview import *
 from .switch import *
@@ -28,5 +26,7 @@ from .tableview import *
 from .tableviewcell import *
 from .textfield import *
 from .textview import *
+from .uikit import *
 from .view import *
+from .viewcore import *
 from .webview import *

@@ -1,12 +1,10 @@
+from ctypes import c_void_p, cdll
+
 from rubicon.objc import ObjCClass, ObjCInstance, objc_method, py_from_ns
 from rubicon.objc.runtime import get_class
-from ctypes import c_void_p, cdll
+
 from .core import asyncq, options, topvc
-
-
-from .uikit import (
-    UIDocumentPickerViewController
-)
+from .uikit import UIDocumentPickerViewController
 
 c = cdll.LoadLibrary(None)
 

@@ -1,27 +1,37 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, ObjCInstance, SEL, ns_from_py, objc_method, py_from_ns, send_super
+import time
+
+from rubicon.objc import (
+    SEL,
+    CGPoint,
+    CGRect,
+    CGSize,
+    ObjCClass,
+    ObjCInstance,
+    ns_from_py,
+    objc_method,
+    py_from_ns,
+    send_super,
+)
 from rubicon.objc.runtime import get_class
+
 from .buttonitem import ButtonItem
-from .core import asyncq, dprint, in_background, topvc, uxviews
 from .colors import uicolor
+from .core import asyncq, dprint, in_background, topvc, uxviews
+from .foundation import NSNotificationCenter
 from .image import Image
 from .navigationbar import NavigationBar, NavigationItem
 from .tabbar import TabBar
-from .view import View
-import time
-
-from .foundation import (
-    NSNotificationCenter
-)
-
 from .uikit import (
+    NSForegroundColorAttributeName,
+    NSLayoutConstraint,
     UIColor,
-    UINavigationController,
-    UIViewController,
     UIKeyboardWillHideNotification,
     UIKeyboardWillShowNotification,
-    NSForegroundColorAttributeName,
-    NSLayoutConstraint
+    UINavigationController,
+    UIViewController,
 )
+from .view import View
+
 
 def get_vc():
     if get_class('uxViewController').value is not None:

@@ -1,4 +1,5 @@
 import json
+
 import ux
 
 with open('uxdocs.json') as in_file:

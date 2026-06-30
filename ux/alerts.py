@@ -1,17 +1,26 @@
 import time
+from ctypes import c_int
 from threading import current_thread
+
 from rubicon.objc import Block, ObjCInstance, py_from_ns, send_message
 from rubicon.objc.runtime import objc_id
-from ctypes import c_int
 
-from .core import asyncq, dprint, in_background, on_main_thread, topvc, waitModal, will_block
-
-from .uikit  import (
+from .core import (
+    asyncq,
+    dprint,
+    in_background,
+    on_main_thread,
+    topvc,
+    waitModal,
+    will_block,
+)
+from .uikit import (
     UIAlertAction,
     UIAlertActionStyle,
     UIAlertController,
-    UIAlertControllerStyle
+    UIAlertControllerStyle,
 )
+
 
 class AlertDialog():
     def __init__(self, window, title, message, callback=None):
@@ -325,8 +334,8 @@ def login_alert(title, *args, hide_cancel_button=False, callback=None):
 
 def hud_alert(message='', icon='success', duration=1.8):
     from .button import Button
-    from .view import View
     from .image import Image
+    from .view import View
 
     @in_background
     def waitfor(fn, status, interval=0.1, duration=2):

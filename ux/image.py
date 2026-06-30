@@ -1,6 +1,8 @@
 import os
+
 from .core import media_path
-from .uikit import (UIImage)
+from .uikit import UIImage
+
 
 class Image():
 

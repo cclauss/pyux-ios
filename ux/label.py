@@ -1,12 +1,9 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, py_from_ns
+from rubicon.objc import CGPoint, CGRect, CGSize, py_from_ns
+
 from .colors import uicolor, uicolor_rgba
 from .font import Font
+from .uikit import NSLineBreakByWordWrapping, UILabel
 from .viewcore import ViewCore
-
-from .uikit import (
-    UILabel,
-    NSLineBreakByWordWrapping
-)
 
 ALIGN_LEFT = 0
 ALIGN_CENTER = 1

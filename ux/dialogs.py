@@ -1,11 +1,18 @@
 import math
 from datetime import date, datetime, time
+
 from rubicon.objc import CGSize, ns_from_py
 
-from .uikit import NSFontAttributeName, UIColor, UITableViewCell, UITableViewCellStyleValue1
-
 import ux
+
 from .core import dprint, waitModal, will_block
+from .uikit import (
+    NSFontAttributeName,
+    UIColor,
+    UITableViewCell,
+    UITableViewCellStyleValue1,
+)
+
 asyncq = ux.asyncq
 
 class dialogs():

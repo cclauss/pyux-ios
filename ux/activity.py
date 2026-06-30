@@ -1,9 +1,7 @@
 from rubicon.objc import py_from_ns
-from .viewcore import ViewCore
 
-from .uikit import (
-    UIActivityIndicatorView
-)
+from .uikit import UIActivityIndicatorView
+from .viewcore import ViewCore
 
 ACTIVITY_INDICATOR_STYLE_WHITE = 100
 ACTIVITY_INDICATOR_STYLE_WHITE_LARGE = 101

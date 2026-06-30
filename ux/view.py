@@ -1,9 +1,10 @@
 from rubicon.objc import ObjCClass, objc_method
 from rubicon.objc.runtime import get_class
+
 from .core import dprint
+from .uikit import UIView
 from .viewcore import ViewCore
 
-from .uikit import UIView
 
 def get_view():
     if get_class('uxView').value is not None:

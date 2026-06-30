@@ -1,17 +1,18 @@
-from rubicon.objc import ns_from_py, ObjCClass, SEL, objc_method, py_from_ns
+from rubicon.objc import SEL, ObjCClass, ns_from_py, objc_method, py_from_ns
 from rubicon.objc.runtime import get_class
-from .core import get_window_size
-from .colors import uicolor, uicolor_rgba
-from .font import Font
-from .viewcore import ViewCore
 
+from .colors import uicolor, uicolor_rgba
+from .core import get_window_size
+from .font import Font
 from .uikit import (
     NSFontAttributeName,
     NSForegroundColorAttributeName,
     UIControlEventValueChanged,
     UIControlStateNormal,
-    UISegmentedControl
+    UISegmentedControl,
 )
+from .viewcore import ViewCore
+
 
 def get_segcontrol():
     if get_class('uxSegmentedControl').value is not None:

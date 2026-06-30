@@ -1,15 +1,21 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, objc_method, py_from_ns, send_message
-from rubicon.objc.runtime import get_class
 from ctypes import c_int
-from .core import asyncq
-from .colors import uicolor, uicolor_rgba
-from .font import Font
-from .viewcore import ViewCore
 
-from .uikit import (
-    UITextInputTraits,
-    UITextView
+from rubicon.objc import (
+    CGPoint,
+    CGRect,
+    CGSize,
+    ObjCClass,
+    objc_method,
+    py_from_ns,
+    send_message,
 )
+from rubicon.objc.runtime import get_class
+
+from .colors import uicolor, uicolor_rgba
+from .core import asyncq
+from .font import Font
+from .uikit import UITextInputTraits, UITextView
+from .viewcore import ViewCore
 
 
 def get_textview():

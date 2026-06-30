@@ -1,18 +1,27 @@
-from rubicon.objc import CGRect, CGPoint, CGSize, ObjCClass, SEL, objc_method, py_from_ns, send_message
-from rubicon.objc.runtime import get_class
 from ctypes import c_int
 from typing import Callable
+
+from rubicon.objc import (
+    SEL,
+    CGPoint,
+    CGRect,
+    CGSize,
+    ObjCClass,
+    objc_method,
+    py_from_ns,
+    send_message,
+)
+from rubicon.objc.runtime import get_class
+
 from .colors import uicolor, uicolor_rgba
 from .font import Font
-from .viewcore import ViewCore
-
 from .uikit import (
     UIControlEventEditingChanged,
     UITextBorderStyle,
     UITextField,
-    UITextInputTraits
+    UITextInputTraits,
 )
-
+from .viewcore import ViewCore
 
 AUTOCAPITALIZE_NONE = 0
 AUTOCAPITALIZE_WORDS = 1

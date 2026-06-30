@@ -1,21 +1,31 @@
-from rubicon.objc import Block, NSPoint, ObjCClass, ObjCInstance, ObjCProtocol, SEL, ns_from_py, objc_method, objc_property, send_message, send_super
-from rubicon.objc.runtime import get_class, objc_id
 from ctypes import c_int
-from .core import asyncq, dprint
+
+from rubicon.objc import (
+    SEL,
+    Block,
+    NSPoint,
+    ObjCClass,
+    ObjCInstance,
+    ObjCProtocol,
+    ns_from_py,
+    objc_method,
+    objc_property,
+    send_message,
+    send_super,
+)
+from rubicon.objc.runtime import get_class, objc_id
+
 from .colors import uicolor, uicolor_rgba
+from .core import asyncq, dprint
 from .font import Font
+from .foundation import NSIndexPath
 from .menu import Action
 from .tableviewcell import TableViewCell
-from .view import View
-from .viewcore import ViewCore
-
-from .foundation import NSIndexPath
-
 from .uikit import (
     UIAction,
     UIColor,
-    UIFont,
     UIControlEventValueChanged,
+    UIFont,
     UIMenu,
     UIRefreshControl,
     UITableViewCell,
@@ -27,8 +37,10 @@ from .uikit import (
     UITableViewCellStyleValue1,
     UITableViewCellStyleValue2,
     UITableViewController,
-    UITableViewScrollPositionNone
+    UITableViewScrollPositionNone,
 )
+from .view import View
+from .viewcore import ViewCore
 
 UISearchController = ObjCClass('UISearchController')
 UIBackgroundConfiguration = ObjCClass('UIBackgroundConfiguration')

@@ -1,13 +1,14 @@
-import sys
 import os
-import time
 import runpy
 import shutil
-    
+import sys
+import time
+
 import ux
-from ux.dialogs import dialogs
 import ux.alerts as console
-    
+from ux.dialogs import dialogs
+
+
 class FileOps (object):
     def __init__(self):
         self.filelist = []

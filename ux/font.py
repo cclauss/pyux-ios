@@ -1,4 +1,5 @@
-from .uikit import (UIFont)
+from .uikit import UIFont
+
 
 class Font():
 

@@ -15,13 +15,13 @@ class FileOps (object):
         self.typelist = []
         self.CutCopy = None
         self.cutview = None
-        
+
     def set_filelist(self, list):
         self.filelist = list
-        
+
     def reload_data(self, tv):
         tv.reload_data()
-        
+
     def newfile(self, newtype, dirpath, newname):
         newfile = os.path.join(dirpath, newname)
         try:
@@ -48,7 +48,7 @@ class FileOps (object):
 
     def copy(self):
         self.CutCopy = 'copy'
-        
+
     def paste(self, path):
         if self.CutCopy == 'cut':
             result = self.pastecut(path)
@@ -90,7 +90,7 @@ class FileOps (object):
                 return 'error'
             r += 1
         return 'ok'
-        
+
     def delete(self):
         for row in self.filelist:
             try:
@@ -135,11 +135,11 @@ class FilesView():
         self.tv.right_button_items = [ux.ButtonItem(title='Menu', action=None, menu=menu)]
         self.dataset = 'files'
         self.refresh(self.path)
-        
+
     def refresh(self, path):
         self.reload(path)
-        
-    def reload(self, path):        
+
+    def reload(self, path):
         # Refresh the list of files and folders
         self.tv.data = []
         try:
@@ -148,7 +148,7 @@ class FilesView():
             print('access denied')
             console.hud_alert('access denied')
             return
-        
+
         if path != self.rootpath:
             self.tv.data.append({'title': '..', 'type': 'folder', 'path': '..', 'accessory_type': 'none'})
         folders = sorted(folders, key=lambda s: s.lower())
@@ -157,14 +157,14 @@ class FilesView():
             self.tv.data.append({'title': item, 'type': 'folder', 'path': path, 'accessory_type': 'none'})
         for item in files:
             self.tv.data.append({'title': item, 'type': 'file', 'path': path, 'accessory_type': 'none'})
-        
+
         self.path = path
         self.tv.name = os.path.basename(self.path)
         print('reload')
         self.tv.reload()
-        
+
     def tableview_cell_for_row(self, tableview, section, row):
-        
+
         item = self.tv.data[row]
         ftype = item['type']
         if ftype == 'folder':
@@ -181,7 +181,7 @@ class FilesView():
             filedtm = time.strftime('%Y-%m-%d %H:%M',time.localtime(stats.st_mtime))
             return {'title': item['title'], 'subtitle': filedtm, 'style': 'subtitle',
                 'accessory_type': 'detail_button', 'image':fileimg}
-        
+
     def table_did_select(self, sender):
         print('row %s selected' % str(self.tv.selected_row))
         section, row = self.tv.selected_row
@@ -207,7 +207,7 @@ class FilesView():
             script = os.path.join(self.path, self.tv.data[row]['title'])
             for n in reversed(range(len(ux.uxviews))):
                 if ux.uxviews[n] == 'newapp':
-                    ux.uxviews.pop(n)            
+                    ux.uxviews.pop(n)
             ux.uxviews.insert(0, 'newapp')
 
             ext = os.path.splitext(script)[1]
@@ -217,34 +217,34 @@ class FilesView():
     def table_accessory_action(self, sender):
         row = self.tv.selected_rows[0][1]
         self.action_menu(sender, 0, row)
-        
+
     def tableview_delete(self, tableview, section, row):
         print('delete: ', row)
         self.actions([row, 'Delete'])
-    
+
     def run_py3(self, script):
 
         def _run_async(_self):
             runpy.run_path(script, run_name='__main__')
-        
+
         ux.asyncq(_run_async)
-            
+
     def action_menu(self, tableview, section, row):
 
         list = [[row, 'Cut', 'none'], [row, "Copy", 'none'], [row, "Paste", 'none'],
             [row, "Rename", 'none'], [row, "New", 'none'], [0, "Refresh", 'none']]
 
         dialogs.list_dialog(title='Acions', items=list, fkitem=None, field=tableview, frame=None, callback=self.actions)
-    
+
     def btn_action(self, sender, args=None):
         action = sender.Header if sys.platform == 'win32' else sender.title
         print('action', action)
         self.actions([0, action])
-    
+
     def menu_choice(self, title, row=0):
         print(title,'-', row)
         self.actions([row, title])
-    
+
     def actions(self, result):
         if not result:
             return
@@ -252,7 +252,7 @@ class FilesView():
         action = result[1]
         if action == 'Refresh':
             self.refresh(self.path)
-            
+
         elif action == 'New':
             fields = [{'key': 'name', 'title': 'New dir', 'type': 'text', 'value':'newdir'}]
             newname = dialogs.form_dialog(title='New dir', fields=fields, callback=self.do_new)
@@ -262,36 +262,36 @@ class FilesView():
                     self.refresh(self.path)
                 else:
                     console.hud_alert(result)
-        
+
         elif action == 'Rename':
             self.filelist(self.tv)
             if len(fileops.filelist) == 0:
-                return 
+                return
             namepart = fileops.filelist[0][1]
             fileops.filelist = []
             fields = [{'key': 'name', 'title': 'Rename', 'type': 'text', 'value':namepart},
                         {'key': 'namepart', 'title': '', 'type': 'text', 'hidden': True, 'value':namepart}]
             dialogs.form_dialog(title='New name', fields=fields, callback=self.do_rename)
-                
-        elif action == 'Import':                
-            
+
+        elif action == 'Import':
+
             def _callback(files):
                 if files:
                     for file in files:
                         print(file)
                         shutil.copy2(file, self.path)
                     self.refresh(self.path)
-            
+
             dialogs.pick_document(types=['public.item'], callback=_callback)
-        
+
         elif action == 'Cut':
             self.filelist(self.tv)
             result = fileops.cut(self)
-                
+
         elif action == 'Copy':
             self.filelist(self.tv)
             result = fileops.copy()
-                
+
         elif action == 'Paste':
             if len(fileops.filelist) == 0:
                 return
@@ -300,7 +300,7 @@ class FilesView():
                 if fileops.cutview is not None:
                     fileops.cutview.refresh(fileops.cutview.path)
                 self.refresh(self.path)
-                
+
         elif action == 'Delete':
             self.filelist1(row)
             confirm = ''
@@ -312,9 +312,9 @@ class FilesView():
                     result = fileops.delete()
                     if result == 'ok':
                         self.refresh(self.path)
-                        
-            ux.confirm_dialog('Delete', confirm, _callback)        
-                
+
+            ux.confirm_dialog('Delete', confirm, _callback)
+
     def do_rename(self, response):
         print('rename', response)
         if response is not None:
@@ -325,7 +325,7 @@ class FilesView():
             except Exception:
                 console.hud_alert('error')
             self.refresh(self.path)
-            
+
     def do_new(self, response):
         print('new dir', response)
         if response is not None:
@@ -345,7 +345,7 @@ class FilesView():
         else:
             filelist.append([self.path, name, 1])
         fileops.set_filelist(filelist)
-                
+
     def filelist(self, tv):
         filelist = []
         for item in tv.selected_rows:
@@ -357,9 +357,9 @@ class FilesView():
                 filelist.append([self.path, name, 0])
             else:
                 filelist.append([self.path, name, 1])
-        
+
         fileops.set_filelist(filelist)
-    
+
 
 navviews = []
 if ux.py3kit:
@@ -387,23 +387,23 @@ if sys.platform == 'ios':
 else:
     folderimg = 'folder'
     fileimg = 'file'
-    
+
 class NavView():
     def __init__(self, name, localpath, rootpath):
-        local = FilesView('Local', localpath, rootpath, fileops, 0)        
-        
+        local = FilesView('Local', localpath, rootpath, fileops, 0)
+
         self.view = local.tv
         nav = ux.NavigationView(local.tv)
         if sys.platform == 'win32':
             nav.present()
         else:
             nav.present('sheet', right_close_button=True, topbar=True, title='Files')
-        
+
 
 class UxApp():
-    
+
     def __init__(self):
         NavView('Nav', localpath, rootpath)
-        
+
 if __name__ == '__main__':
     UxApp()

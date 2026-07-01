@@ -21,7 +21,7 @@ def alert_modal(sender):
 
 def alert_callback(sender):
     print('alert callback...')
-    
+
     def _callback(result):
         print(result)
         match result:
@@ -44,10 +44,10 @@ def input_modal(sender):
 def input_callback(sender):
     print('input callback...')
     print(sender.width)
-    
+
     def _callback(result):
         print('result', result)
-    
+
     console.input_alert('Input Alert', 'Enter your name', callback=_callback)
 
 @ux.in_background
@@ -59,38 +59,38 @@ def password_modal(sender):
 def password_callback(sender):
     print('password callback...')
     print('border color', b6.border_color)
-    
+
     def _callback(result):
         print('result', result)
-        
+
     console.password_alert('Password Alert', 'Enter your password', callback=_callback)
 
 def login_callback(sender):
     print('login callback...')
-    
+
     def _callback(result):
-        
+
         if result:
             print('result', result)
         else:
             print('Canceled')
-    
+
     ux.login_alert('Login', 'Enter your credentials?', callback=_callback)
 
 def confirm_callback(sender):
     print('confirm callback...')
-    
+
     def _callback(result):
         print('result', result)
         if result:
             print('Confirmed')
         else:
             print('Canceled')
-    
+
     ux.confirm_dialog('Delete', 'Are you sure?', callback=_callback)
-    
-    
-w, h = ux.get_window_size()    
+
+
+w, h = ux.get_window_size()
 if w > 600:
     w = 580
 

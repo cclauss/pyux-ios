@@ -14,7 +14,7 @@ def prompt_value(sender):
         console.hud_alert(result, icon='success', duration=1.5)
         time.sleep(2)
         keytext = keychain.get_password('pyux', 'demo')
-        dialogs.text_dialog(title='From keychain', text=keytext) 
+        dialogs.text_dialog(title='From keychain', text=keytext)
 
 view = ui.View()
 view.name = 'Convert UI'

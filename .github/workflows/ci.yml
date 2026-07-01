@@ -13,4 +13,4 @@ jobs:
           ignore_words_list: parms
       - uses: astral-sh/ruff-action@v4.0.0
         with:
-          args: check --extend-select=I --ignore=F403
+          args: check --extend-select=I,W --ignore=F403

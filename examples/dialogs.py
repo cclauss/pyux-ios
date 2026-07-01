@@ -55,7 +55,7 @@ def list_callback(sender):
     print('list callback...')
     print('border color', l2.border_color)
     actions = [[1, 'Add', 'none'], [2, 'Edit', 'checkmark'], [3, 'Delete', 'none']]
-    
+
     def _callback(result):
         print('result', result)
 
@@ -86,14 +86,14 @@ def form_modal(sender):
 
 def form_callback(sender):
     print('form callback...')
-    
+
     def _callback(result):
         print('result', result)
-    
+
     dialogs.form_dialog(title='Form Dialog', fields=fields, callback=_callback)
-    
-    
-w, h = ux.get_window_size()    
+
+
+w, h = ux.get_window_size()
 if w > 600:
     w = 580
 

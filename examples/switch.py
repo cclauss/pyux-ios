@@ -6,7 +6,7 @@ import ux
 @ux.in_background
 def btnpress(sender):
     print('button clicked')
-    
+
 def segaction(sender):
     print('segment selected:', sender.selected_index)
     sender.tint_color = 'yellow'
@@ -23,19 +23,19 @@ def switchaction(sender):
     print('switch value:', sender.value)
     segment.auto_content_inset = sender.value
     switchactionx(sender)
-    
+
 @ux.on_main_thread
 def switchactionx(sender):
     print(current_thread().name)
     print('switch value main:', sender.value)
-    
+
 def layout():
     print('-- layout --')
     segment.center = (myview.width/2, 20)
     print(myview.frame)
-    
+
 segment = ux.SegmentedControl()
-segment.segments = ['One', 'Two', 'Three']        
+segment.segments = ['One', 'Two', 'Three']
 segment.selected_index = 0
 segment.background_color = 'black'
 segment.font = ('Menlo', 18)

@@ -4,7 +4,7 @@ import ux
 @ux.in_background
 def show_value(sender):
     print(slide.value)
-    
+
 view = ux.View()
 view.name = 'Slider'
 view.frame = (0, 0, 580, 620)

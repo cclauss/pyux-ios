@@ -6,7 +6,7 @@ import ux
 
 
 class Launcher():
-    
+
     def __init__(self):
         self.tv = ux.TableView()
         self.tv.frame = (0, 0, 580, 620)
@@ -22,7 +22,7 @@ class Launcher():
         menuimage = ux.Image.named('system:ellipsis.circle')
         menuitems = [
             ('Exit', self.tv.close)
-        ]        
+        ]
         btmmenu = ux.Menu('Actions', menuitems)
         self.button = ux.ButtonItem(image=menuimage, action=None, menu=btmmenu)
         self.tv.left_button_items = [self.button]
@@ -39,7 +39,7 @@ class Launcher():
         except Exception as e:
             print(f'access denied: {e}')
             return
-        
+
         files = sorted(files, key=lambda s: s.lower())
         for file in files:
             if not os.path.splitext(file)[1] == '.py':
@@ -48,28 +48,28 @@ class Launcher():
             fullname = os.path.join(self.path, file)
             stats =  os.stat(fullname)
             filedtm = time.strftime('%Y-%m-%d %H:%M',time.localtime(stats.st_mtime))
-            
+
             self.dsitems.append({'title': title,
                             'filename': file,
                             'subtitle': filedtm,
                             'style': 'default',
                             'accessory_type': 'detail_button'
-            }) 
+            })
 
         self.tv.data = self.dsitems
         self.tv.end_refresh()
         self.tv.reload()
-        
+
     def did_close(self):
         os.chdir(self.savepath)
-        
+
     def run_py3(self, script):
         def _run_async(_self):
             runpy.run_path(script, run_name='__main__')
-        
+
         os.chdir(self.path)
         ux.asyncq(_run_async)
-    
+
     def tableview_select(self, sender):
         print('row %d selected' % self.tv.selected_rows[0][1])
         filename = self.tv.data[self.tv.selected_rows[0][1]]['filename']

@@ -4,14 +4,14 @@ import ux as ui
 
 """
 The built-in PyUx TableView datasource contains much of the same functionality as ListDataSource.
-A Pythonista style ListDataSource is included to aid with Pythonista script migrations. 
+A Pythonista style ListDataSource is included to aid with Pythonista script migrations.
 """
 
 with open('uxdocs.json') as in_file:
     uxdocs = json.load(in_file)
 
 class TableView1():
-    
+
     def __init__(self):
         self.tv = ui.TableView()
         self.tv.frame = (0, 0, 580, 620)
@@ -32,7 +32,7 @@ class TableView1():
         self.tv.right_button_items = [self.edit_button]
         self.tv.present('sheet')
         self.refresh()
-        
+
     def refresh(self):
         dsitems = []
         classes = uxdocs['classes']
@@ -42,7 +42,7 @@ class TableView1():
                             'style': 'subtitle',
                             'image': self.btnimage,
                             'accessory_type': 'detail_button'
-            }) 
+            })
         self.ds.items = dsitems
 
     def toggle_edit(self, sender):
@@ -52,11 +52,11 @@ class TableView1():
             self.edit_button.title = 'Done'
         else:
             self.edit_button.title = 'Edit'
-    
+
     def tableview_cell_for_row(self, tableview, section, row):
         return {'title': self.tv.data[row][2],
                 'subtitle': '  ' + self.tv.data[row][3],
-                'style': 'subtitle', 
+                'style': 'subtitle',
                 'accessory': 'detail_button'
         }
 

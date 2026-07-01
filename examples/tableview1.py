@@ -6,7 +6,7 @@ with open('uxdocs.json') as in_file:
     uxdocs = json.load(in_file)
 
 class TableView1():
-    
+
     def __init__(self):
         self.tv = ux.TableView()
         self.tv.frame = (0, 0, 580, 620)
@@ -35,7 +35,7 @@ class TableView1():
         for item in self.dsitems:
             if searchstr in item['title'].lower():
                 dsitems.append(item)
-                
+
         self.tv.data = dsitems
         self.tv.reload()
 
@@ -49,11 +49,11 @@ class TableView1():
                             'style': 'subtitle',
                             'image': self.btnimage,
                             'accessory_type': 'detail_button'
-            }) 
+            })
         self.tv.end_refresh() # end pull-down refresh
         self.tv.data = self.dsitems
         self.tv.reload()
-        
+
     def menu_choice(self, title, row):
         if title:
             print('title', title, row)
@@ -69,7 +69,7 @@ class TableView1():
             self.edit_button.title = 'Done'
         else:
             self.edit_button.title = 'Edit'
-    
+
     def table_did_select(self, sender):
         print('row %d selected' % self.tv.selected_rows[0][1])
 

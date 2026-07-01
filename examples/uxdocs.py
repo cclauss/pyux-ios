@@ -10,10 +10,10 @@ w = 580 if sw > 580 else sw
 print(ux.get_window_traits()['idiom'])
 if ux.get_window_traits()['hsize_class'] == 'compact':
     print('compact')
-       
+
 with open('./uxdocs.json') as in_file:
     uxdocs = json.load(in_file)
-    
+
 def loadConfig(file, config={}):
     config = collections.OrderedDict(config.copy())
     cp = configparser.ConfigParser(dict_type=collections.OrderedDict, interpolation=None)
@@ -26,11 +26,11 @@ def loadConfig(file, config={}):
 
 htmldef = loadConfig('./uxdocs.ini')
 
-    
+
 HTML = """<html><head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <h3>Hello HTML</h3></html>'
-"""    
+"""
 
 HTML = """<html><head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -99,14 +99,14 @@ table tr:nth-child(2n) {
 </body>
 </html>
 """
-    
+
 class DocViewer(ux.WebView):
-  
+
     def webview_did_finish_load(self, webview):
         print('webview_did_finish_load...')
-    
+
 class TableView2():
-    
+
     def __init__(self, parent, key):
         self.parent = parent
         self.key = key
@@ -132,7 +132,7 @@ class TableView2():
                 rows = []
                 for fn in cls[key].keys():
                     subtitle = str(cls[key][fn])
-                    style = 'default' if subtitle == '--' else 'subtitle' 
+                    style = 'default' if subtitle == '--' else 'subtitle'
                     rows.append({'title':fn,
                             'subtitle': subtitle,
                             'style': style,
@@ -141,7 +141,7 @@ class TableView2():
                             'html': subtitle
                     })
                 self.dsitems.append((key, rows))
-            
+
         self.tv.data = self.dsitems
         self.tv.reload()
 
@@ -159,21 +159,21 @@ class TableView2():
 
     def table_accessory_action(self, sender):
         print('accessory row %d selected' % self.tv.selected_rows[0][1])
-        
+
     def tableview_cell_for_row(self, tableview, section, row):
         return self.tv.data[section][1][row]
-    
+
     def tableview_number_of_sections(self, tableview):
         return len(self.tv.data)
 
     def tableview_title_for_header(self, tableview, section):
         return self.tv.data[section][0]
-        
+
     def tableview_number_of_rows(self, tableview, section):
         return len(self.tv.data[section][1])
 
 class TableView1():
-    
+
     def __init__(self, parent):
         self.parent = parent
         self.tv = ux.TableView()
@@ -196,7 +196,7 @@ class TableView1():
         for item in self.dsitems:
             if searchstr in item['title'].lower():
                 dsitems.append(item)
-                
+
         self.tv.data = dsitems
         self.tv.reload()
 
@@ -211,7 +211,7 @@ class TableView1():
                             'image': None,
                             'accessory_type': 'disclosure_indicator',
                             'key': key
-            }) 
+            })
         self.tv.data = self.dsitems
         self.tv.reload()
 
@@ -224,18 +224,18 @@ class TableView1():
 
     def table_accessory_action(self, sender):
         print('accessory row %d selected' % self.tv.selected_rows[0][1])
-        
+
 
 class UXDocs():
 
     def __init__(self):
         print('begin')
-        
+
         @ux.on_main_thread
         def init():
 
-            self.split = ux.SplitView(3)        
-        
+            self.split = ux.SplitView(3)
+
             self.webview = DocViewer()
             img1 = ux.Image.named('system:xmark')
             btnclose = ux.ButtonItem(image=img1, action=self.split.close)
@@ -246,14 +246,14 @@ class UXDocs():
             self.table1 = TableView1(self)
             self.table2 = TableView2(self, None)
             self.table1.did_appear = self.did_appear
-            
+
             menuitems = [
                 ('Exit', self.split.close)
-            ]        
+            ]
             dirmenu = ux.Menu('Actions', menuitems)
             menu_button = ux.ButtonItem(image='menu', action=None, menu=dirmenu)
             self.table1.tv.left_button_items = [menu_button]
-            
+
             # auto = 0 ; secondaryOnly = 1 ; oneBesideSecondary = 2 ; oneOverSecondary = 3
             # twoBesideSecondary = 4 ; twoOverSecondary = 5 ; twoDisplaceSecondary = 6
             self.split.display_mode = 'twoDisplaceSecondary'
@@ -268,34 +268,34 @@ class UXDocs():
             self.split.secondary_column_width_fraction = 0.4
 
             self.split.collapsing_top_column = self.compact_top_column
-            
+
             self.split.set_view(self.table1.tv, 'primary')
             self.split.set_view(self.table2.tv, 'supplementary')
             self.split.set_view(self.webview, 'secordary')
-            
+
             if sw > 580:
                 self.split.present('sheet')
             else:
                 self.split.present('fullscreen')
 
         init()
-            
+
     def compact_top_column(self, proposed):
         print('-proposed-', proposed)
         return 0
-        
+
     def show_supplementary(self, sender):
         if self.split.collapsed:
             self.split.show_column('supplementary')
         else:
             self.split.show_column('supplementary')
-            
+
     def show_secordary(self, sender):
         if self.split.collapsed:
             self.split.show_column('secordary')
 
     def did_appear(self):
         self.split.show_column('primary')
-    
-if __name__ == '__main__':    
+
+if __name__ == '__main__':
     UXDocs()

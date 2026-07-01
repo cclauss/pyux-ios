@@ -5,7 +5,7 @@ import sys
 import ux
 
 HTML = """<html><head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <h3>Hello HTML</h3></html>'
 """
 # <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable = no">
@@ -31,17 +31,17 @@ class WebViewDemo(ux.View):
         ]
 
         self.webview.load_url(url)
-        
+
     def webview_should_start_load(self, webview, url, nav_type):
         if url.startswith('file://'):
             return True
         else:
-            #return False # restrict url 
-            return True    
-    
+            #return False # restrict url
+            return True
+
     def webview_did_start_load(self, webview):
         print('-start loading-')
-                
+
     def webview_did_finish_load(self, webview):
         print('-finish loading-')
 
@@ -52,40 +52,40 @@ class WebViewDemo(ux.View):
     def webview_message_received(self, message):
         print('Message received: ' + message['content'])
         sendstr = "alert('Python received your message: " + message['content'] + "');"
-        self.webview.eval_js(sendstr) 
-    
+        self.webview.eval_js(sendstr)
+
     def actions(self, sender, args=None):
         action = sender.Header if sys.platform == 'win32' else sender.title
         print('action', action)
         if action == 'Home':
             url = 'file://webapps/www/testit.htm'
             self.webview.load_url(url)
-            
+
         elif action == 'Html':
             print(HTML)
             self.webview.disable_zoom()
             self.webview.load_html(HTML)
-        
+
         elif action == 'Python.org':
             self.webview.load_url('https://python.org', no_cache=True)
-            
+
     def nav_back(self, sender):
         print('go back')
         self.webview.go_back()
-        
+
     def nav_fwd(self, sender):
         print('go forward')
         self.webview.go_forward()
-        
+
     def nav_reload(self, sender):
         print('reload')
         self.webview.reload()
-        
+
     def nav_stop(self, sender):
         print('stop')
         self.webview.stop()
-        
-        
+
+
 if __name__ == '__main__':
     #url = 'http://192.168.1.80/examples/webview.htm'
     #url = 'file:///Documents/examples/webview.htm'

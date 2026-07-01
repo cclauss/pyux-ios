@@ -6,7 +6,7 @@ with open('uxdocs.json') as in_file:
     uxdocs = json.load(in_file)
 
 class TableView2():
-    
+
     def __init__(self):
         self.tv = ux.TableView()
         self.tv.name = 'TableView'
@@ -31,7 +31,7 @@ class TableView2():
         self.tv.separator_color = 'cyan'
         self.tv.present('sheet')
         self.refresh()
-        
+
     def refresh(self):
         dsitems = []
         classes = uxdocs['classes']
@@ -52,7 +52,7 @@ class TableView2():
         else:
             return {'title': self.tv.data[row][2],
                     'subtitle': '  ' + self.tv.data[row][3],
-                    'style': 'subtitle', 
+                    'style': 'subtitle',
                     'accessory': 'detail_button'
             }
 
@@ -67,7 +67,7 @@ class TableView2():
 
     def tableview_title_for_delete_button(self, tableview, section, row):
         return 'Delete it?'
-        
+
     def tableview_delete(self, tableview, section, row):
         print('delete:', row)
         self.tv.begin_updates()
@@ -93,6 +93,6 @@ class TableView2():
             self.tv.data.insert(5, [5, 'new5', 'New 5', 'detail'])
             self.tv.insert_rows([3, 5])
             self.tv.end_updates()
-            
-        
+
+
 table = TableView2()

@@ -59,7 +59,7 @@ if ux.get_window_traits()['idiom'] == 'phone':
     tabbar.present('fullscreen')
 else:
     tabbar.present('sheet')
-  
+
 
 
 
